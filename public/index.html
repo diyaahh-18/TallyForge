@@ -665,7 +665,9 @@
         </div>
     </header>
 
-    <div id="dashboard-section" class="dashboard-section hidden">
+    <div id="dashboard-section" class="dashboard-wrapper hidden">
+        <!-- ================= OVERVIEW DASHBOARD VIEW ================= -->
+        <div id="view-dashboard" class="dashboard-section dashboard-view-pane">
         <!-- ================= NATURAL LANGUAGE VIBE COMMAND BAR ================= -->
         <section class="card vibe-command-card" id="vibe-command-section">
             <div class="vibe-card-header">
@@ -969,8 +971,28 @@
             </div>
         </section>
 
+        <!-- ================= INTERACTIVE TAG CLOUD COMPONENT ================= -->
+        <section class="card tag-cloud-card" id="tag-cloud-card">
+            <div class="tag-cloud-header">
+                <div class="tag-cloud-title-group">
+                    <span class="card-icon">🏷️</span>
+                    <div>
+                        <h3>Interactive Tag Cloud</h3>
+                        <p class="tag-cloud-subtitle">Filter your entire analytics stream by focus context or spend tags</p>
+                    </div>
+                </div>
+                <button type="button" id="btn-clear-tag-filter" class="btn-clear-filter hidden">
+                    ✕ Clear Tag Filter
+                </button>
+            </div>
+            <div class="tag-cloud-pills" id="tag-cloud-pills">
+                <!-- Dynamically populated tag pills -->
+            </div>
+        </section>
+        </div> <!-- End of #view-dashboard -->
+
         <!-- ================= MILESTONES & ACHIEVEMENTS PANEL ================= -->
-        <!-- ================= MILESTONES & ACHIEVEMENTS PANEL ================= -->
+        <div id="view-badges" class="dashboard-section dashboard-view-pane">
         <section class="card milestones-card" id="milestones-section">
             <div class="milestones-header">
                 <div class="milestones-title-wrap">
@@ -1035,8 +1057,10 @@
                 <!-- Badges dynamically rendered and updated via script.js -->
             </div>
         </section>
+        </div> <!-- End of #view-badges -->
 
         <!-- ================= YEARLY ACTIVITY MATRIX SECTION ================= -->
+        <div id="view-calendar" class="dashboard-section dashboard-view-pane">
         <section class="card matrix-card" id="yearly-matrix-section">
             <div class="matrix-card-header">
                 <div class="matrix-title-group">
@@ -1044,8 +1068,7 @@
                         <span class="card-icon">🗓️</span>
                         <h2>Yearly Activity Matrix</h2>
                     </div>
-                    <p class="matrix-subtitle">12-month calendar heatmap &bull; Click any day block to inspect and
-                        isolate historical data</p>
+                    <p class="matrix-subtitle">12-month calendar heatmap &bull; Click any day block to inspect and isolate historical data</p>
                 </div>
 
                 <!-- Matrix Controls Toolbar -->
@@ -1114,8 +1137,7 @@
             <div class="matrix-footer">
                 <div class="matrix-footer-info">
                     <span class="info-icon">💡</span>
-                    <span id="matrix-footer-hint">Hover over day blocks for metrics &bull; Click to isolate dashboard
-                        KPIs & charts</span>
+                    <span id="matrix-footer-hint">Hover over day blocks for metrics &bull; Click to isolate dashboard KPIs & charts</span>
                 </div>
                 <div class="heatmap-legend" id="heatmap-legend">
                     <span class="legend-text">Less</span>
@@ -1130,131 +1152,123 @@
                 </div>
             </div>
         </section>
+        </div> <!-- End of #view-calendar -->
 
-        <!-- ================= INTERACTIVE TAG CLOUD COMPONENT ================= -->
-        <section class="card tag-cloud-card" id="tag-cloud-card">
-            <div class="tag-cloud-header">
-                <div class="tag-cloud-title-group">
-                    <span class="card-icon">🏷️</span>
-                    <div>
-                        <h3>Interactive Tag Cloud</h3>
-                        <p class="tag-cloud-subtitle">Filter your entire analytics stream by focus context or spend tags
-                        </p>
-                    </div>
-                </div>
-                <button type="button" id="btn-clear-tag-filter" class="btn-clear-filter hidden">
-                    ✕ Clear Tag Filter
-                </button>
-            </div>
-            <div class="tag-cloud-pills" id="tag-cloud-pills">
-                <!-- Dynamically populated tag pills -->
-            </div>
-        </section>
-
-        <main class="container" id="dashboard-main-container">
-            <!-- Left Column: Forms -->
-            <div class="card form-card" id="form-card-column">
-                <div id="expense-form-box" class="module-box">
-                    <div class="card-header">
-                        <span class="card-icon">💸</span>
-                        <h2>Log Expense</h2>
-                    </div>
-                    <form id="expense-form">
-                        <div class="form-group">
-                            <label for="exp-category">Category</label>
-                            <input type="text" id="exp-category" placeholder="e.g. Food, Books, Transport" required>
+        <!-- ================= EXPENSES VIEW ================= -->
+        <div id="view-expenses" class="dashboard-section dashboard-view-pane">
+            <main class="container" id="expense-main-container">
+                <!-- Left Column: Expense Form -->
+                <div class="card form-card" id="expense-form-column">
+                    <div id="expense-form-box" class="module-box">
+                        <div class="card-header">
+                            <span class="card-icon">💸</span>
+                            <h2>Log Expense</h2>
                         </div>
-                        <div class="form-row">
+                        <form id="expense-form">
                             <div class="form-group">
-                                <label for="exp-amount">Amount (₹)</label>
-                                <input type="number" id="exp-amount" placeholder="e.g. 250" min="1" step="any" required>
+                                <label for="exp-category">Category</label>
+                                <input type="text" id="exp-category" placeholder="e.g. Food, Books, Transport" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="exp-amount">Amount (₹)</label>
+                                    <input type="number" id="exp-amount" placeholder="e.g. 250" min="1" step="any" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exp-date">Date</label>
+                                    <input type="date" id="exp-date" required>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exp-date">Date</label>
-                                <input type="date" id="exp-date" required>
+                                <label for="exp-tags">Custom Tags (optional)</label>
+                                <input type="text" id="exp-tags" placeholder="e.g. #Snacks, #Dorm, #CafeStudy">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exp-tags">Custom Tags (optional)</label>
-                            <input type="text" id="exp-tags" placeholder="e.g. #Snacks, #Dorm, #CafeStudy">
-                        </div>
-                        <button type="submit" id="btn-expense" class="btn btn-primary">
-                            <span>+ Add Expense</span>
-                        </button>
-                    </form>
+                            <button type="submit" id="btn-expense" class="btn btn-primary">
+                                <span>+ Add Expense</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
-                <div class="divider" id="forms-divider"></div>
-
-                <div id="study-form-box" class="module-box">
-                    <div class="card-header">
-                        <span class="card-icon">⏱️</span>
-                        <h2>Log Study Session</h2>
-                    </div>
-                    <form id="study-form">
-                        <div class="form-group">
-                            <label for="std-subject">Subject</label>
-                            <input type="text" id="std-subject" placeholder="e.g. Data Structures, Python" required>
+                <!-- Right Column: Expense Chart Breakdown -->
+                <div class="card charts-card" id="expense-charts-column">
+                    <div class="chart-section" id="expense-chart-box">
+                        <div class="chart-header">
+                            <div class="chart-header-left">
+                                <span class="card-icon">📊</span>
+                                <div>
+                                    <h2>Expense Breakdown</h2>
+                                    <p class="chart-subtitle" id="expense-chart-subtitle">Distribution by category</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-row">
+                        <div class="chart-container">
+                            <canvas id="expenseChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div> <!-- End of #view-expenses -->
+
+        <!-- ================= FOCUS / STUDY VIEW ================= -->
+        <div id="view-focus" class="dashboard-section dashboard-view-pane">
+            <main class="container" id="study-main-container">
+                <!-- Left Column: Study Form -->
+                <div class="card form-card" id="study-form-column">
+                    <div id="study-form-box" class="module-box">
+                        <div class="card-header">
+                            <span class="card-icon">⏱️</span>
+                            <h2>Log Study Session</h2>
+                        </div>
+                        <form id="study-form">
                             <div class="form-group">
-                                <label for="std-hours">Hours Spent</label>
-                                <input type="number" id="std-hours" placeholder="e.g. 2.5" step="any" min="0.01"
-                                    max="24" required>
+                                <label for="std-subject">Subject</label>
+                                <input type="text" id="std-subject" placeholder="e.g. Data Structures, Python" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="std-hours">Hours Spent</label>
+                                    <input type="number" id="std-hours" placeholder="e.g. 2.5" step="any" min="0.01"
+                                        max="24" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="std-date">Date</label>
+                                    <input type="date" id="std-date" required>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="std-date">Date</label>
-                                <input type="date" id="std-date" required>
+                                <label for="std-tags">Custom Tags (optional)</label>
+                                <input type="text" id="std-tags" placeholder="e.g. #ExamPrep, #DeepWork, #Project">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="std-tags">Custom Tags (optional)</label>
-                            <input type="text" id="std-tags" placeholder="e.g. #ExamPrep, #DeepWork, #Project">
-                        </div>
-                        <button type="submit" id="btn-study" class="btn btn-success">
-                            <span>+ Add Study Log</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Right Column: Charts & Tag Analytics -->
-            <div class="card charts-card" id="charts-card-column">
-                <div class="chart-section" id="expense-chart-box">
-                    <div class="chart-header">
-                        <div class="chart-header-left">
-                            <span class="card-icon">📊</span>
-                            <div>
-                                <h2>Expense Breakdown</h2>
-                                <p class="chart-subtitle" id="expense-chart-subtitle">Distribution by category</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="expenseChart"></canvas>
+                            <button type="submit" id="btn-study" class="btn btn-success">
+                                <span>+ Add Study Log</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
 
-                <div class="divider" id="charts-divider"></div>
-
-                <div class="chart-section" id="study-chart-box">
-                    <div class="chart-header">
-                        <div class="chart-header-left">
-                            <span class="card-icon">📈</span>
-                            <div>
-                                <h2>Study Hours Trend</h2>
-                                <p class="chart-subtitle" id="study-chart-subtitle">Hours invested per subject</p>
+                <!-- Right Column: Study Trend Chart -->
+                <div class="card charts-card" id="study-charts-column">
+                    <div class="chart-section" id="study-chart-box">
+                        <div class="chart-header">
+                            <div class="chart-header-left">
+                                <span class="card-icon">📈</span>
+                                <div>
+                                    <h2>Study Hours Trend</h2>
+                                    <p class="chart-subtitle" id="study-chart-subtitle">Hours invested per subject</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="studyChart"></canvas>
+                        <div class="chart-container">
+                            <canvas id="studyChart"></canvas>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div> <!-- End of #view-focus -->
 
-        <!-- ================= AUTOMATED WEEKLY PERFORMANCE DIGEST ================= -->
+        <!-- ================= AUTOMATED WEEKLY PERFORMANCE DIGEST / ANALYTICS ================= -->
+        <div id="view-analytics" class="dashboard-section dashboard-view-pane">
         <section class="card weekly-digest-card" id="weekly-digest-section">
             <div class="digest-card-header">
                 <div class="digest-title-group">
@@ -1263,8 +1277,7 @@
                         <span>AUTOMATED PERFORMANCE DIGEST</span>
                     </div>
                     <h2>Weekly Insight Digest</h2>
-                    <p class="digest-subtitle">Week-over-week discipline metrics, spend-to-focus efficiency &amp; habit
-                        trends</p>
+                    <p class="digest-subtitle">Week-over-week discipline metrics, spend-to-focus efficiency &amp; habit trends</p>
                 </div>
                 <div class="digest-period-pill" id="digest-period-label">Current Active Week</div>
             </div>
@@ -1303,8 +1316,7 @@
                     <div class="insight-icon-box">📊</div>
                     <div class="insight-text-wrap">
                         <h4 class="insight-title">Weekend vs. Weekday Pattern</h4>
-                        <p class="insight-text" id="digest-insight-1">Calculating your spending and study distribution
-                            across weekdays and weekends...</p>
+                        <p class="insight-text" id="digest-insight-1">Calculating your spending and study distribution across weekdays and weekends...</p>
                     </div>
                 </div>
 
@@ -1312,8 +1324,7 @@
                     <div class="insight-icon-box">🎯</div>
                     <div class="insight-text-wrap">
                         <h4 class="insight-title">Top Subject &amp; Tag Velocity</h4>
-                        <p class="insight-text" id="digest-insight-2">Analyzing your most active focus tags and subject
-                            velocity this week...</p>
+                        <p class="insight-text" id="digest-insight-2">Analyzing your most active focus tags and subject velocity this week...</p>
                     </div>
                 </div>
 
@@ -1321,12 +1332,12 @@
                     <div class="insight-icon-box">💡</div>
                     <div class="insight-text-wrap">
                         <h4 class="insight-title">Discipline Recommendation</h4>
-                        <p class="insight-text" id="digest-insight-3">Analyzing your habit trajectory to recommend peak
-                            focus optimization...</p>
+                        <p class="insight-text" id="digest-insight-3">Analyzing your habit trajectory to recommend peak focus optimization...</p>
                     </div>
                 </div>
             </div>
         </section>
+        </div> <!-- End of #view-analytics -->
     </div>
 
     <!-- ========================================================= -->
@@ -1540,7 +1551,7 @@
     <!-- ========================================================= -->
     <nav class="floating-dock-nav hidden" id="floating-dock" aria-label="Quick View Navigation">
         <div class="dock-indicator-pill" id="dock-pill"></div>
-        <button type="button" class="dock-tab active" data-view="dashboard" aria-label="Overview Dashboard">
+        <button type="button" class="dock-tab nav-tab active" data-view="dashboard" data-tab="#view-dashboard" aria-label="Overview Dashboard">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <rect width="7" height="9" x="3" y="3" rx="1"></rect>
@@ -1550,7 +1561,7 @@
             </svg>
             <span class="dock-tooltip">Dashboard</span>
         </button>
-        <button type="button" class="dock-tab" data-view="matrix" aria-label="Activity Matrix">
+        <button type="button" class="dock-tab nav-tab" data-view="matrix" data-tab="#view-calendar" aria-label="Activity Matrix / Calendar">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
@@ -1564,17 +1575,17 @@
                 <path d="M12 18h.01"></path>
                 <path d="M16 18h.01"></path>
             </svg>
-            <span class="dock-tooltip">Activity Matrix</span>
+            <span class="dock-tooltip">Calendar</span>
         </button>
-        <button type="button" class="dock-tab" data-view="milestones" aria-label="Milestones">
+        <button type="button" class="dock-tab nav-tab" data-view="milestones" data-tab="#view-badges" aria-label="Badges & Milestones">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="8" r="6"></circle>
                 <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
             </svg>
-            <span class="dock-tooltip">Milestones</span>
+            <span class="dock-tooltip">Badges</span>
         </button>
-        <button type="button" class="dock-tab" data-view="expenses" aria-label="Expenses">
+        <button type="button" class="dock-tab nav-tab" data-view="expenses" data-tab="#view-expenses" aria-label="Expenses">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="2" x2="12" y2="22"></line>
@@ -1582,15 +1593,15 @@
             </svg>
             <span class="dock-tooltip">Expenses</span>
         </button>
-        <button type="button" class="dock-tab" data-view="study" aria-label="Study Logs">
+        <button type="button" class="dock-tab nav-tab" data-view="study" data-tab="#view-focus" aria-label="Focus / Study Logs">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            <span class="dock-tooltip">Study Logs</span>
+            <span class="dock-tooltip">Focus</span>
         </button>
-        <button type="button" class="dock-tab" data-view="analytics" aria-label="Analytics">
+        <button type="button" class="dock-tab nav-tab" data-view="analytics" data-tab="#view-analytics" aria-label="Analytics">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 3v18h18"></path>

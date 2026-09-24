@@ -81,6 +81,7 @@ def serve_static(path):
 
 # API Route to check current session / logged in status
 @app.route('/api/current-user', methods=['GET'])
+@app.route('/api/auth', methods=['GET'])
 def current_user():
     username = session.get('username')
     if not username:
@@ -191,6 +192,8 @@ def demo_login():
 
 # API Route to fetch expenses and study logs for the logged-in user
 @app.route('/api/get-data', methods=['GET'])
+@app.route('/api/data', methods=['GET'])
+@app.route('/api/logs', methods=['GET'])
 def get_data():
     username = session.get('username')
     if not username:

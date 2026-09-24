@@ -3674,9 +3674,9 @@ function setupEventListeners() {
     });
 
     // Initialize Vibe Logger, Focus ROI Simulator and Floating Dock
-    initVibeLogger();
-    initFocusROISimulator();
-    initFloatingDock();
+    try { initVibeLogger(); } catch (e) { console.warn('Vibe logger init warning:', e); }
+    try { initFocusROISimulator(); } catch (e) { console.warn('Simulator init warning:', e); }
+    try { initFloatingDock(); } catch (e) { console.warn('Floating dock init warning:', e); }
 }
 
 function updateDockPill(activeTab) {
@@ -3698,29 +3698,53 @@ function updateDockPill(activeTab) {
     pill.classList.add('ready');
 }
 
-function switchDashboardView(viewName) {
-    const dashboardSection = document.getElementById('dashboard-section');
-    const dock = document.getElementById('floating-dock');
-    if (!dashboardSection || !dock) return;
+function switchDashboardView(viewOrTarget) {
+    let target = '#view-dashboard';
+    const raw = String(viewOrTarget || 'dashboard').trim();
+    if (raw.startsWith('#')) {
+        target = raw;
+    } else {
+        const clean = raw.toLowerCase();
+        if (clean === 'calendar' || clean === 'matrix') target = '#view-calendar';
+        else if (clean === 'badges' || clean === 'milestones') target = '#view-badges';
+        else if (clean === 'expenses') target = '#view-expenses';
+        else if (clean === 'focus' || clean === 'study') target = '#view-focus';
+        else if (clean === 'analytics') target = '#view-analytics';
+        else target = '#view-dashboard';
+    }
 
-    const tabs = dock.querySelectorAll('.dock-tab');
+    // Toggle active styles on icons
+    const allTabs = document.querySelectorAll('.nav-tab, .dock-tab');
     let activeTab = null;
-    tabs.forEach(tab => {
-        if (tab.dataset.view === viewName) {
-            tab.classList.add('active');
-            activeTab = tab;
+    allTabs.forEach(t => {
+        const tTarget = t.dataset.tab || t.getAttribute('href');
+        if (tTarget === target || (t.dataset.view && target.includes(t.dataset.view))) {
+            t.classList.add('active');
+            activeTab = t;
         } else {
-            tab.classList.remove('active');
+            t.classList.remove('active');
         }
     });
 
-    if (activeTab) {
+    // Show target section and hide others
+    if (target) {
+        document.querySelectorAll('.dashboard-section').forEach(section => {
+            section.style.display = 'none';
+        });
+        const activeSection = document.querySelector(target);
+        if (activeSection) {
+            activeSection.style.display = 'block';
+        }
+    }
+
+    if (activeTab && typeof updateDockPill === 'function') {
         updateDockPill(activeTab);
     }
 
-    dashboardSection.classList.remove('view-expenses', 'view-study', 'view-analytics', 'view-matrix', 'view-milestones', 'view-dashboard');
-    if (viewName !== 'dashboard') {
-        dashboardSection.classList.add(`view-${viewName}`);
+    if (target === '#view-calendar' && typeof renderHeatmapMatrix === 'function') {
+        renderHeatmapMatrix();
+    } else if (target === '#view-badges' && typeof renderMilestones === 'function') {
+        renderMilestones();
     }
 
     setTimeout(() => {
@@ -3730,32 +3754,91 @@ function switchDashboardView(viewName) {
         if (studyChartInstance && typeof studyChartInstance.resize === 'function') {
             studyChartInstance.resize();
         }
-    }, 150);
+    }, 80);
 }
 
 function initFloatingDock() {
-    const dock = document.getElementById('floating-dock');
-    if (!dock) return;
+    const tabs = document.querySelectorAll('.nav-tab');
+    if (!tabs || tabs.length === 0) return;
 
-    const tabs = dock.querySelectorAll('.dock-tab');
     tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const view = tab.dataset.view || 'dashboard';
-            switchDashboardView(view);
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = tab.dataset.tab || tab.getAttribute('href');
+            // Toggle active styles on icons
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Show target section and hide others
+            if (target) {
+                document.querySelectorAll('.dashboard-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                const activeSection = document.querySelector(target);
+                if (activeSection) {
+                    activeSection.style.display = 'block';
+                }
+            }
+
+            // Update dock pill and charts
+            if (typeof updateDockPill === 'function') {
+                updateDockPill(tab);
+            }
+            if (target === '#view-calendar' && typeof renderHeatmapMatrix === 'function') {
+                renderHeatmapMatrix();
+            } else if (target === '#view-badges' && typeof renderMilestones === 'function') {
+                renderMilestones();
+            }
+            setTimeout(() => {
+                if (expenseChartInstance && typeof expenseChartInstance.resize === 'function') {
+                    expenseChartInstance.resize();
+                }
+                if (studyChartInstance && typeof studyChartInstance.resize === 'function') {
+                    studyChartInstance.resize();
+                }
+            }, 80);
         });
     });
 
-    window.addEventListener('resize', () => {
-        const currentActive = dock.querySelector('.dock-tab.active') || tabs[0];
-        if (currentActive) {
+    const dock = document.getElementById('floating-dock');
+    if (dock) {
+        window.addEventListener('resize', () => {
+            const currentActive = dock.querySelector('.dock-tab.active, .nav-tab.active') || tabs[0];
+            if (currentActive && typeof updateDockPill === 'function') {
+                updateDockPill(currentActive);
+            }
+        });
+        const currentActive = dock.querySelector('.dock-tab.active, .nav-tab.active');
+        if (currentActive && typeof updateDockPill === 'function') {
             updateDockPill(currentActive);
         }
-    });
+    }
 }
 
-// Initialize on DOM Ready
+// Initialize on DOM Ready with try...catch protection
 document.addEventListener('DOMContentLoaded', () => {
-    applyTheme(getCurrentTheme(), false);
-    setupEventListeners();
-    checkSession();
+    try {
+        applyTheme(getCurrentTheme(), false);
+    } catch (err) {
+        console.warn('Theme initialization error:', err);
+    }
+
+    try {
+        setupEventListeners();
+    } catch (err) {
+        console.error('Event listeners initialization error:', err);
+    }
+
+    try {
+        initFloatingDock();
+    } catch (err) {
+        console.error('Floating dock initialization error:', err);
+    }
+
+    try {
+        checkSession();
+    } catch (err) {
+        console.warn('Session check error on boot:', err);
+        showLandingView();
+    }
 });

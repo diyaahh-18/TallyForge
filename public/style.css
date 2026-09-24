@@ -1979,12 +1979,27 @@ h4,
 }
 
 /* ========================================================= */
-/* 4. DASHBOARD SECTION & BANNERS                            */
-/* ========================================================= */
+.dashboard-wrapper,
 .dashboard-section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px 100px 20px;
+    width: 100%;
+}
+
+.dashboard-section {
+    animation: fadeInView 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInView {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .date-filter-banner,
@@ -4388,7 +4403,8 @@ h4,
     opacity: 1;
 }
 
-.dock-tab {
+.dock-tab,
+.nav-tab {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -4400,16 +4416,28 @@ h4,
     background: transparent;
     color: var(--dock-tab-color);
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
     z-index: 1;
 }
 
-.dock-tab:hover {
+.dock-tab:hover,
+.nav-tab:hover {
     color: var(--dock-tab-hover);
+    transform: translateY(-2px);
 }
 
-.dock-tab.active {
+.dock-tab.active,
+.nav-tab.active {
     color: var(--dock-tab-active);
+}
+
+.dashboard-view-pane {
+    width: 100%;
+    transition: opacity 0.25s ease;
+}
+
+.dashboard-view-pane.hidden {
+    display: none !important;
 }
 
 .dock-tooltip {
