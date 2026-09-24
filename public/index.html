@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TallyForge — Dual-Stream Productivity &amp; Expense Analytics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN for interactive graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        // Immediately apply saved theme to prevent unstyled flash
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('tallyforge_theme') || localStorage.getItem('studyspend_theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } catch (e) {}
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- ========================================================= -->
+    <!-- 1. LANDING PAGE / HOMEPAGE (Shown by default when logged out) -->
+    <!-- ========================================================= -->
+    <div id="landing-section" class="landing-section">
+        <!-- Floating Glassmorphic Landing Navbar -->
+        <header class="landing-navbar" id="landing-navbar">
+            <div class="landing-nav-container">
+                <a href="#landing-section" class="landing-brand" aria-label="TallyForge Home">
+                    <div class="brand-logo-icon">⚡</div>
+                    <div class="brand-text-block">
+                        <span class="brand-name">TallyForge</span>
+                        <span class="brand-tag">Analytics Suite</span>
+                    </div>
+                </a>
+
+                <nav class="landing-nav-links" aria-label="Landing Navigation">
+                    <a href="#section-problems-solutions" class="nav-link">Why TallyForge</a>
+                    <a href="#section-preview" class="nav-link">Live Showroom</a>
+                    <a href="#section-pillars" class="nav-link">Features</a>
+                    <a href="#section-heatmap-feature" class="nav-link">365-Day Matrix</a>
+                </nav>
+
+                <div class="landing-nav-actions">
+                    <!-- Theme Toggle -->
+                    <button type="button" class="theme-toggle-btn" id="theme-toggle-landing" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+
+                    <!-- Auth Launchers -->
+                    <button type="button" class="btn btn-ghost landing-btn-signin" id="btn-landing-signin">
+                        <span>Sign In</span>
+                    </button>
+                    <button type="button" class="btn btn-gradient-glow landing-btn-getstarted" id="btn-landing-getstarted">
+                        <span>Get Started Free</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+
+                    <!-- Mobile Hamburger Menu Button -->
+                    <button type="button" class="mobile-hamburger-btn" id="btn-mobile-nav-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" title="Open Navigation Menu">
+                        <span class="hamburger-bar"></span>
+                        <span class="hamburger-bar"></span>
+                        <span class="hamburger-bar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Drawer -->
+            <div class="landing-mobile-menu hidden" id="landing-mobile-menu">
+                <nav class="mobile-nav-links">
+                    <a href="#section-problems-solutions" class="mobile-nav-link">💡 Why TallyForge</a>
+                    <a href="#section-preview" class="mobile-nav-link">✨ Live Showroom</a>
+                    <a href="#section-pillars" class="mobile-nav-link">⚡ Core Architecture</a>
+                    <a href="#section-heatmap-feature" class="mobile-nav-link">🗓️ 365-Day Habit Matrix</a>
+                </nav>
+                <div class="mobile-nav-auth">
+                    <button type="button" class="btn btn-ghost mobile-btn-auth" id="btn-mobile-signin">
+                        <span>Sign In</span>
+                    </button>
+                    <button type="button" class="btn btn-gradient-glow mobile-btn-auth" id="btn-mobile-getstarted">
+                        <span>⚡ Get Started Free</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="landing-main">
+            <!-- ================= HERO SECTION ================= -->
+            <section class="landing-hero" id="section-hero">
+                <div class="ambient-glow glow-1" aria-hidden="true"></div>
+                <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+                <!-- Floating Decorative Micro-Shapes -->
+                <div class="floating-micro-shape shape-pink" style="top: 18%; left: 8%;">✦</div>
+                <div class="floating-micro-shape shape-teal shape-reverse" style="top: 24%; right: 10%;">⚡</div>
+                <div class="floating-micro-shape shape-gold" style="bottom: 25%; left: 12%;">★</div>
+                <div class="floating-micro-shape shape-orange shape-reverse" style="bottom: 20%; right: 14%;">₹</div>
+                <div class="floating-micro-shape shape-violet" style="top: 62%; right: 7%;">💎</div>
+
+                <div class="hero-container">
+                    <div class="hero-badge">
+                        <span class="badge-sparkle">✨</span>
+                        <span>The Dual-Stream Student Analytics Platform</span>
+                        <span class="badge-pill">v2.4 Live</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Master Your Time.<br>
+                        <span class="gradient-text">Audit Your Spend.</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Built for ambitious students and self-learners. TallyForge synchronizes daily academic focus hours with personal financial tracking into a unified command center — eliminating burnout, ending budget leaks, and visualizing yearly discipline with GitHub-style contribution heatmaps.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <button type="button" class="btn btn-hero-primary" id="btn-hero-cta">
+                            <span class="btn-sparkle-icon">⚡</span>
+                            <span>Get Started Free</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-hero-secondary" id="btn-hero-demo">
+                            <span class="demo-play-icon">▶</span>
+                            <span>Live Interactive Demo</span>
+                        </button>
+                    </div>
+
+                    <!-- Social Proof / Highlights Ribbon -->
+                    <div class="hero-trust-ribbon">
+                        <div class="trust-item">
+                            <span class="trust-icon">⏱️</span>
+                            <span>&lt;10s Dual-Stream Logging</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <span class="trust-icon">📊</span>
+                            <span>Real-Time Chart.js Visualizer</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <span class="trust-icon">🗓️</span>
+                            <span>365-Day Habit Matrix</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <span class="trust-icon">🔒</span>
+                            <span>Zero Ads • Private Session</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= INTERACTIVE SHOWCASE / PREVIEW BANNER ================= -->
+            <section class="landing-preview-section" id="section-preview">
+                <div class="preview-wrapper">
+                    <div class="preview-window-frame">
+                        <div class="window-topbar">
+                            <div class="window-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <div class="window-address-bar">
+                                <span class="lock-icon">🔒</span>
+                                <span class="url-text">tallyforge.app/dashboard</span>
+                                <span class="live-status-badge">● LIVE DEMO READY</span>
+                            </div>
+                            <div class="window-actions-dummy">
+                                <span class="mini-chip">2026 Active Matrix</span>
+                            </div>
+                        </div>
+
+                        <div class="mockup-canvas">
+                            <div class="mockup-stats-row">
+                                <div class="mockup-stat-card glow-expense">
+                                    <div class="mstat-header">
+                                        <span class="mstat-icon">💸</span>
+                                        <span class="mstat-title">Spend This Month</span>
+                                    </div>
+                                    <div class="mstat-number expense-accent">₹4,890</div>
+                                    <div class="mstat-sub">↓ 14% vs avg budget</div>
+                                </div>
+                                <div class="mockup-stat-card glow-study">
+                                    <div class="mstat-header">
+                                        <span class="mstat-icon">⏱️</span>
+                                        <span class="mstat-title">Study Investment</span>
+                                    </div>
+                                    <div class="mstat-number study-accent">34.5 hrs</div>
+                                    <div class="mstat-sub">↑ 22% weekly streak</div>
+                                </div>
+                                <div class="mockup-stat-card glow-streak">
+                                    <div class="mstat-header">
+                                        <span class="mstat-icon">🔥</span>
+                                        <span class="mstat-title">Consistency Streak</span>
+                                    </div>
+                                    <div class="mstat-number streak-accent">14 Days</div>
+                                    <div class="mstat-sub">Longest: 28 Days</div>
+                                </div>
+                                <div class="mockup-stat-card glow-top">
+                                    <div class="mstat-header">
+                                        <span class="mstat-icon">🎯</span>
+                                        <span class="mstat-title">Top Focus Subject</span>
+                                    </div>
+                                    <div class="mstat-number primary-accent">Algorithms</div>
+                                    <div class="mstat-sub">12.5 hrs logged</div>
+                                </div>
+                            </div>
+
+                            <div class="mockup-heatmap-preview">
+                                <div class="mock-heatmap-header">
+                                    <div class="mock-title-group">
+                                        <span class="mock-icon">🗓️</span>
+                                        <span class="mock-title">Yearly Activity Matrix Preview</span>
+                                    </div>
+                                    <div class="mock-toggle-pill">
+                                        <span class="mock-pill-opt active">🟢 Study Consistency</span>
+                                        <span class="mock-pill-opt">🟣 Expense Load</span>
+                                    </div>
+                                </div>
+
+                                <div class="mock-matrix-grid" id="mock-matrix-grid">
+                                    <div class="mock-grid-row">
+                                        <div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div>
+                                    </div>
+                                    <div class="mock-grid-row">
+                                        <div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div>
+                                    </div>
+                                    <div class="mock-grid-row">
+                                        <div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div>
+                                    </div>
+                                </div>
+                                <div class="mock-heatmap-caption">
+                                    <span>Interactive 12-Month Matrix • Click any historical date to filter full analytics</span>
+                                    <button type="button" class="mock-launch-btn" id="btn-preview-launch">Try Live Heatmap →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PROBLEM VS SOLUTION SECTION ================= -->
+            <section class="landing-section-block" id="section-problems-solutions">
+                <div class="section-header-block">
+                    <div class="section-tag">ENGINEERED FOR CLARITY</div>
+                    <h2 class="section-title">Why Traditional Trackers Fail Students</h2>
+                    <p class="section-desc">Productivity apps ignore your finances, and expense trackers don't understand study burnout. TallyForge bridges the gap with a unified architecture.</p>
+                </div>
+
+                <div class="problem-solution-grid">
+                    <div class="ps-card">
+                        <div class="ps-header-pill">
+                            <span class="pill-number">01</span>
+                            <span class="pill-title">Stream Fragmentation</span>
+                        </div>
+                        <div class="ps-box problem-box">
+                            <div class="box-badge badge-problem">🔴 The Friction</div>
+                            <h3 class="box-title">Fragmented App Switching</h3>
+                            <p class="box-text">Juggling standalone study timers, separate budget spreadsheets, and note apps creates cognitive fatigue, leading to tracker abandonment within a week.</p>
+                        </div>
+                        <div class="ps-arrow">↓</div>
+                        <div class="ps-box solution-box">
+                            <div class="box-badge badge-solution">🟢 TallyForge Solution</div>
+                            <h3 class="box-title">Dual-Stream Dashboard</h3>
+                            <p class="box-text">Log your focus hours and daily financial expenses in one unified, elegant workspace in under 10 seconds with instantaneous visual feedback.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card">
+                        <div class="ps-header-pill">
+                            <span class="pill-number">02</span>
+                            <span class="pill-title">Habit Blindspots</span>
+                        </div>
+                        <div class="ps-box problem-box">
+                            <div class="box-badge badge-problem">🔴 The Friction</div>
+                            <h3 class="box-title">Zero Long-Term Momentum</h3>
+                            <p class="box-text">Isolated daily numbers provide zero perspective on seasonal discipline slumps, exam preparation streaks, or recurring weekend spend spikes.</p>
+                        </div>
+                        <div class="ps-arrow">↓</div>
+                        <div class="ps-box solution-box">
+                            <div class="box-badge badge-solution">🟢 TallyForge Solution</div>
+                            <h3 class="box-title">Annual Matrix &amp; Day Inspector</h3>
+                            <p class="box-text">GitHub-style 12-month calendar heatmap displaying study consistency and expense loads with clickable day inspector modals and instant KPI filtering.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card">
+                        <div class="ps-header-pill">
+                            <span class="pill-number">03</span>
+                            <span class="pill-title">Financial Leakage</span>
+                        </div>
+                        <div class="ps-box problem-box">
+                            <div class="box-badge badge-problem">🔴 The Friction</div>
+                            <h3 class="box-title">Silent Budget Overruns</h3>
+                            <p class="box-text">Unmonitored cafe runs, textbook subscriptions, and impulse spending quietly erode student savings while academic burnout builds unnoticed.</p>
+                        </div>
+                        <div class="ps-arrow">↓</div>
+                        <div class="ps-box solution-box">
+                            <div class="box-badge badge-solution">🟢 TallyForge Solution</div>
+                            <h3 class="box-title">Smart Guardrails &amp; Trends</h3>
+                            <p class="box-text">Live Chart.js distribution breakdowns across spending categories and study subjects enable effortless balance between budget and high-value focus.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= FEATURE PILLARS DEEP DIVE ================= -->
+            <section class="landing-section-block section-pillars-bg" id="section-pillars">
+                <div class="section-header-block">
+                    <div class="section-tag">CORE CAPABILITIES</div>
+                    <h2 class="section-title">Built for Peak Academic &amp; Financial Discipline</h2>
+                    <p class="section-desc">Every component is engineered with sub-pixel precision to make self-discipline rewarding and intuitive.</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card" id="section-heatmap-feature">
+                        <div class="pillar-icon-glow green-glow">🗓️</div>
+                        <h3 class="pillar-title">365-Day Activity Matrix</h3>
+                        <p class="pillar-text">Visualize your entire year at a single glance. Switch seamlessly between green study intensity levels and violet expense load scales. Hover for instant metrics or click any date to filter the dashboard.</p>
+                        <ul class="pillar-feature-list">
+                            <li><span class="check-icon">✓</span> Multi-level intensity calculation (Level 0–4)</li>
+                            <li><span class="check-icon">✓</span> Active streak &amp; total active days counter</li>
+                            <li><span class="check-icon">✓</span> Year navigation with retroactive log support</li>
+                        </ul>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon-glow indigo-glow">📊</div>
+                        <h3 class="pillar-title">Dual-Stream Chart.js Analytics</h3>
+                        <p class="pillar-text">Dynamic doughnut and bar chart visualizers that update instantly upon logging new entries. Automatic palette adaptation ensures breathtaking visuals in both Dark and Light themes.</p>
+                        <ul class="pillar-feature-list">
+                            <li><span class="check-icon">✓</span> Category-level financial distribution breakdown</li>
+                            <li><span class="check-icon">✓</span> Subject-level focus time investment bars</li>
+                            <li><span class="check-icon">✓</span> Reactive resizing on view changes</li>
+                        </ul>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon-glow cyan-glow">🎛️</div>
+                        <h3 class="pillar-title">Floating Navigation Dock</h3>
+                        <p class="pillar-text">An ultra-sleek macOS-inspired floating dock navigation with fluid magnetic pill animations, allowing instant switching between Overview, Matrix, Expenses, and Study logs.</p>
+                        <ul class="pillar-feature-list">
+                            <li><span class="check-icon">✓</span> Smooth sliding backdrop pill indicator</li>
+                            <li><span class="check-icon">✓</span> Glassmorphism backdrop blur filter</li>
+                            <li><span class="check-icon">✓</span> Contextual hover tooltips</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= METRICS RIBBON ================= -->
+            <section class="metrics-ribbon-section" id="section-metrics">
+                <div class="metrics-grid">
+                    <div class="metric-block">
+                        <div class="metric-val">100%</div>
+                        <div class="metric-label">Free &amp; Open to Use</div>
+                    </div>
+                    <div class="metric-block">
+                        <div class="metric-val">365</div>
+                        <div class="metric-label">Days Contribution Heatmap</div>
+                    </div>
+                    <div class="metric-block">
+                        <div class="metric-val">&lt; 10s</div>
+                        <div class="metric-label">Quick Logging Speed</div>
+                    </div>
+                    <div class="metric-block">
+                        <div class="metric-val">2-in-1</div>
+                        <div class="metric-label">Study &amp; Expense Synchronization</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= HIGH-CONVERTING CTA BANNER ================= -->
+            <section class="cta-banner-section" id="section-cta">
+                <div class="cta-banner-card">
+                    <div class="cta-ambient-glow" aria-hidden="true"></div>
+                    <h2 class="cta-banner-title">Ready to Take Control of Your Time &amp; Budget?</h2>
+                    <p class="cta-banner-subtitle">Start logging your focus sessions and financial outlays today with zero setup friction.</p>
+                    <div class="cta-banner-actions">
+                        <button type="button" class="btn btn-banner-primary" id="btn-banner-cta">
+                            <span>Launch TallyForge Now</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-banner-secondary" id="btn-banner-demo">
+                            <span>Explore Demo Account</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Minimalist Landing Footer -->
+        <footer class="landing-footer" id="landing-footer">
+            <div class="landing-footer-container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <div class="footer-logo">⚡ TallyForge</div>
+                        <p class="footer-tagline">Dual-Stream Productivity &amp; Expense Analytics</p>
+                    </div>
+                    <div class="footer-nav">
+                        <a href="#section-hero">Home</a>
+                        <a href="#section-problems-solutions">Why TallyForge</a>
+                        <a href="#section-preview">Showroom</a>
+                        <a href="#section-pillars">Features</a>
+                        <a href="#" id="link-footer-demo">Live Demo</a>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-tech-stack">
+                        <span class="tech-stack-label">Built with:</span>
+                        <span class="tech-pill">Flask</span>
+                        <span class="tech-pill">Chart.js</span>
+                        <span class="tech-pill">Motion Primitives</span>
+                        <span class="tech-pill">Vanilla CSS</span>
+                    </div>
+                    <div class="footer-meta">
+                        <p>&copy; 2026 TallyForge. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 2. AUTH MODAL OVERLAY (Smooth Glassmorphic Dialog)        -->
+    <!-- ========================================================= -->
+    <div id="auth-modal" class="auth-modal-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="auth-modal-backdrop" id="auth-modal-backdrop"></div>
+        <div class="auth-modal-dialog">
+            <!-- Theme Toggle positioned in top-left corner of modal dialog -->
+            <button type="button" class="theme-toggle-btn modal-theme-toggle" id="theme-toggle-modal" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+
+            <button type="button" class="auth-modal-close" id="btn-close-auth-modal" aria-label="Close Authentication Dialog">✕</button>
+
+            <div class="auth-card-header">
+                <div class="auth-icon">🔐</div>
+                <h2 id="auth-modal-title">Welcome Back</h2>
+                <p id="auth-modal-subtitle" class="auth-subtitle">Sign in to access your personal TallyForge dashboard</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button type="button" class="tab-btn active" id="tab-modal-login">Sign In</button>
+                <button type="button" class="tab-btn" id="tab-modal-register">Create Account</button>
+            </div>
+
+            <div id="auth-modal-alert" class="alert hidden" role="alert"></div>
+
+            <form id="modal-login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="modal-login-username">Username</label>
+                    <input type="text" id="modal-login-username" placeholder="Enter your username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="modal-login-password">Password</label>
+                    <input type="password" id="modal-login-password" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+                <button type="submit" id="btn-modal-login" class="btn btn-primary">
+                    <span>Sign In to Dashboard</span>
+                </button>
+                <div class="auth-footer-hint">
+                    <p>Don't have an account? <a href="#" id="modal-link-to-register">Register here</a></p>
+                </div>
+            </form>
+
+            <form id="modal-register-form" class="auth-form hidden">
+                <div class="form-group">
+                    <label for="modal-register-username">Choose Username</label>
+                    <input type="text" id="modal-register-username" placeholder="Choose your username" minlength="3" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="modal-register-password">Create Password</label>
+                    <input type="password" id="modal-register-password" placeholder="Create a password" minlength="4" required autocomplete="new-password">
+                </div>
+                <button type="submit" id="btn-modal-register" class="btn btn-success">
+                    <span>Create Free Account</span>
+                </button>
+                <div class="auth-footer-hint">
+                    <p>Already have an account? <a href="#" id="modal-link-to-login">Sign in here</a></p>
+                </div>
+            </form>
+
+            <div class="modal-demo-shortcut">
+                <div class="divider-text"><span>OR</span></div>
+                <button type="button" class="btn btn-demo-shortcut" id="btn-modal-demo">
+                    <span>⚡ Try Live Demo (1-Click Instant Access)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 3. MAIN DASHBOARD APPLICATION (Shown when authenticated)   -->
+    <!-- ========================================================= -->
+    <header class="app-header hidden" id="app-header">
+        <div class="header-container">
+            <div class="header-left">
+                <!-- Theme Toggle on top-left of Dashboard Header -->
+                <button type="button" class="theme-toggle-btn" id="theme-toggle-header" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <div class="header-content">
+                    <div class="logo-icon">⚡</div>
+                    <div>
+                        <h1>TallyForge</h1>
+                        <p class="subtitle">Dual-Stream Productivity &amp; Expense Analytics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header Navigation, Gamified Streak Counter & User Profile -->
+            <div id="user-header-actions" class="user-header-actions">
+                <!-- Return to Landing Page Button -->
+                <button type="button" class="btn-nav-home" id="btn-header-home" title="View Homepage / Landing Page">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Homepage</span>
+                </button>
+
+                <!-- Gamified Active Logging Streak Counter -->
+                <div class="header-streak-badge" id="header-streak-badge" title="Active Study &amp; Expense Logging Streak">
+                    <span class="flame-icon">🔥</span>
+                    <span class="streak-text"><strong id="streak-count-text">0</strong> Day Streak</span>
+                </div>
+
+                <div class="user-badge" id="user-badge">
+                    <span class="user-icon">👤</span>
+                    <span class="user-text">Logged in as <strong id="logged-username">—</strong></span>
+                </div>
+                <button type="button" id="btn-logout" class="btn btn-logout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="dashboard-section" class="dashboard-section hidden">
+        <!-- ================= NATURAL LANGUAGE VIBE COMMAND BAR ================= -->
+        <section class="card vibe-command-card" id="vibe-command-section">
+            <div class="vibe-card-header">
+                <div class="vibe-title-group">
+                    <span class="card-icon vibe-sparkle-icon">✨</span>
+                    <div>
+                        <h2>Vibe Logger</h2>
+                        <p class="vibe-subtitle">Instant natural language dual-stream logger with automatic entity &amp; tag extraction</p>
+                    </div>
+                </div>
+                <div class="vibe-badge-pill">
+                    <span>⚡ AI Intent Parser</span>
+                </div>
+            </div>
+
+            <form id="vibe-logger-form" class="vibe-form">
+                <div class="vibe-input-wrapper">
+                    <span class="vibe-input-icon">🪄</span>
+                    <input type="text" id="vibe-input" class="vibe-input-field" 
+                           placeholder="e.g., Spent ₹250 on coffee and studied Algo for 3.5 hrs #ExamPrep" 
+                           autocomplete="off">
+                    <button type="button" id="btn-vibe-clear" class="btn-vibe-clear hidden" title="Clear input">✕</button>
+                    <button type="submit" id="btn-vibe-log" class="btn btn-vibe-submit">
+                        <span class="btn-sparkle">⚡</span>
+                        <span>Quick Log</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Live Interpretation Preview Chips -->
+            <div class="vibe-preview-bar" id="vibe-preview-bar">
+                <div class="vibe-preview-label">Live Intent Detection:</div>
+                <div class="vibe-chips-container" id="vibe-chips-container">
+                    <span class="vibe-empty-hint">Type a natural sentence to preview auto-extracted stream metrics...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HISTORICAL NAVIGATION & DATE FILTERING TOOLBAR ================= -->
+        <section class="card date-toolbar-card" id="date-toolbar-section">
+            <div class="date-toolbar-container">
+                <div class="date-toolbar-presets" role="group" aria-label="Date Range Presets">
+                    <span class="toolbar-label">⏱️ Timeframe:</span>
+                    <button type="button" class="date-preset-btn active" data-preset="all" id="btn-preset-all">All Time</button>
+                    <button type="button" class="date-preset-btn" data-preset="today" id="btn-preset-today">Today</button>
+                    <button type="button" class="date-preset-btn" data-preset="yesterday" id="btn-preset-yesterday">Yesterday</button>
+                    <button type="button" class="date-preset-btn" data-preset="last7" id="btn-preset-last7">Last 7 Days</button>
+                    <button type="button" class="date-preset-btn" data-preset="thismonth" id="btn-preset-month">This Month</button>
+                </div>
+
+                <div class="date-toolbar-custom">
+                    <span class="toolbar-label">📅 Custom Date:</span>
+                    <div class="custom-date-input-wrap">
+                        <input type="date" id="toolbar-custom-date" class="toolbar-date-input" aria-label="Pick specific date to filter">
+                        <button type="button" id="btn-apply-custom-date" class="btn-date-apply">Filter</button>
+                    </div>
+                    <button type="button" id="btn-export-csv" class="btn btn-export-csv" title="Download Dual-Stream CSV Data Export">
+                        <span class="export-icon">📥</span>
+                        <span>Export CSV</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Historical Date Filter Banner -->
+        <div id="date-filter-banner" class="date-filter-banner hidden">
+            <div class="filter-banner-content">
+                <div class="filter-badge">
+                    <span class="filter-icon">📅</span>
+                    <span>Filtered by Date: <strong id="filter-date-display">—</strong></span>
+                </div>
+                <span class="filter-hint">Dashboard KPIs &amp; Charts isolated for this single date</span>
+            </div>
+            <div class="filter-banner-actions">
+                <button type="button" id="btn-clear-date-filter" class="btn-clear-filter">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    <span>Show All History</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Active Tag Filter Banner -->
+        <div id="tag-filter-banner" class="tag-filter-banner hidden">
+            <div class="tag-banner-content">
+                <span class="tag-banner-icon">🏷️</span>
+                <span>Filtered by Tag: <strong id="filter-tag-display">—</strong></span>
+                <span class="tag-banner-hint">Isolating matching study sessions and expenses</span>
+            </div>
+            <button type="button" id="btn-clear-tag-banner" class="btn-clear-filter">
+                ✕ Show All Tags
+            </button>
+        </div>
+
+        <!-- ================= DUAL-STREAM TOP-LEVEL KPI CARDS & SMART GAUGES ================= -->
+        <section class="stats-grid" id="dashboard-kpi-grid">
+            <div class="stat-card stat-card-interactive">
+                <div class="stat-header-row">
+                    <span class="stat-label">Total Expenses</span>
+                    <span class="stat-mini-icon">💸</span>
+                </div>
+                <span class="stat-value expense-accent" id="total-expense-val">₹0</span>
+                <span class="stat-sub" id="total-expense-sub">Across all logged outlays</span>
+            </div>
+
+            <div class="stat-card stat-card-interactive">
+                <div class="stat-header-row">
+                    <span class="stat-label">Total Study Hours</span>
+                    <span class="stat-mini-icon">⏱️</span>
+                </div>
+                <span class="stat-value study-accent" id="total-study-val">0.0 hrs</span>
+                <span class="stat-sub" id="total-study-sub">Deep work focus time</span>
+            </div>
+
+            <div class="stat-card stat-card-interactive" id="card-cost-per-hour">
+                <div class="stat-header-row">
+                    <span class="stat-label">Cost Per Focused Hour</span>
+                    <span class="stat-mini-icon">⚡</span>
+                </div>
+                <span class="stat-value primary-accent" id="cost-per-hour-val">₹0 / hr</span>
+                <span class="stat-sub" id="cost-per-hour-sub">Focus Capital ROI (Spend / Hours)</span>
+            </div>
+
+            <div class="stat-card stat-card-interactive" id="card-stress-index">
+                <div class="stat-header-row">
+                    <span class="stat-label">Predictive Stress Index</span>
+                    <span class="stat-mini-icon">🧠</span>
+                </div>
+                <div class="stress-gauge-wrap">
+                    <span class="stat-value" id="stress-index-val">12 / 100</span>
+                    <span class="stress-status-pill status-optimal" id="stress-index-status">Optimal</span>
+                </div>
+                <div class="stress-meter-bar">
+                    <div class="stress-meter-fill" id="stress-meter-fill" style="width: 12%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SMART GUARDRAILS & DAILY TARGETS ================= -->
+        <section class="card guardrails-card" id="guardrails-section">
+            <div class="guardrails-grid">
+                <!-- Smart Spending Limit Guardrail -->
+                <div class="guardrail-box" id="guardrail-spend-box">
+                    <div class="guardrail-header">
+                        <div class="guardrail-title-wrap">
+                            <span class="guardrail-icon">🛡️</span>
+                            <div>
+                                <span class="guardrail-label">Daily Spending Limit Guardrail</span>
+                                <span class="guardrail-threshold" id="guardrail-spend-threshold">Limit: ₹800.00 / day</span>
+                            </div>
+                        </div>
+                        <span class="guardrail-status-badge status-good" id="guardrail-spend-badge">Within Budget 🟢</span>
+                    </div>
+                    <div class="guardrail-progress-wrap">
+                        <div class="guardrail-bar"><div class="guardrail-fill" id="guardrail-spend-fill" style="width: 0%"></div></div>
+                        <div class="guardrail-values">
+                            <span id="guardrail-spend-text">Spent Today: ₹0.00</span>
+                            <span id="guardrail-spend-remaining">Remaining: ₹800.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Study Target Progress Tracker -->
+                <div class="guardrail-box" id="target-study-box">
+                    <div class="guardrail-header">
+                        <div class="guardrail-title-wrap">
+                            <span class="guardrail-icon">🎯</span>
+                            <div>
+                                <span class="guardrail-label">Daily Study Target Tracker</span>
+                                <span class="guardrail-threshold" id="guardrail-study-threshold">Target: 4.0 hrs / day</span>
+                            </div>
+                        </div>
+                        <span class="guardrail-status-badge status-target" id="target-study-badge">0% Completed</span>
+                    </div>
+                    <div class="guardrail-progress-wrap">
+                        <div class="guardrail-bar"><div class="guardrail-fill target-fill" id="target-study-fill" style="width: 0%"></div></div>
+                        <div class="guardrail-values">
+                            <span id="target-study-text">Logged Today: 0.0 hrs</span>
+                            <span id="target-study-remaining">Goal: 4.0 hrs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= INTERACTIVE FOCUS ROI & STRESS SIMULATOR ================= -->
+        <section class="card focus-roi-simulator-card" id="focus-roi-simulator-section">
+            <div class="sim-header">
+                <div class="sim-title-group">
+                    <span class="card-icon">⚡</span>
+                    <div>
+                        <h2>Live Focus ROI &amp; Stress Simulator</h2>
+                        <p class="sim-subtitle">Simulate custom daily study commitments vs. spending budgets to model your Focus Capital ROI and burnout trajectory</p>
+                    </div>
+                </div>
+                <button type="button" id="btn-apply-sim-guardrails" class="btn btn-sim-apply" title="Apply simulated values to active daily guardrails">
+                    <span>🛡️ Apply to Live Guardrails</span>
+                </button>
+            </div>
+
+            <div class="sim-body-grid">
+                <!-- Left Column: Interactive Sliders -->
+                <div class="sim-sliders-col">
+                    <!-- Daily Study Target Slider -->
+                    <div class="sim-control-box">
+                        <div class="sim-control-header">
+                            <div class="sim-label-wrap">
+                                <span class="sim-icon">⏱️</span>
+                                <label for="sim-slider-study" class="sim-label">Daily Study Target</label>
+                            </div>
+                            <span class="sim-slider-value study-accent" id="sim-study-val">4.0 hrs / day</span>
+                        </div>
+                        <input type="range" id="sim-slider-study" class="tallyforge-range-slider slider-study" min="1.0" max="12.0" step="0.5" value="4.0" aria-label="Simulated Daily Study Target">
+                        <div class="sim-slider-ticks">
+                            <span>1.0 hr (Light)</span>
+                            <span>4.0 hrs (Target)</span>
+                            <span>8.0 hrs (Deep)</span>
+                            <span>12.0 hrs (Max)</span>
+                        </div>
+                    </div>
+
+                    <!-- Daily Budget Limit Slider -->
+                    <div class="sim-control-box">
+                        <div class="sim-control-header">
+                            <div class="sim-label-wrap">
+                                <span class="sim-icon">💸</span>
+                                <label for="sim-slider-budget" class="sim-label">Daily Spending Budget Limit</label>
+                            </div>
+                            <span class="sim-slider-value expense-accent" id="sim-budget-val">₹500 / day</span>
+                        </div>
+                        <input type="range" id="sim-slider-budget" class="tallyforge-range-slider slider-budget" min="100" max="2000" step="50" value="500" aria-label="Simulated Daily Budget Limit">
+                        <div class="sim-slider-ticks">
+                            <span>₹100 (Frugal)</span>
+                            <span>₹500 (Balanced)</span>
+                            <span>₹1,200 (Flexible)</span>
+                            <span>₹2,000 (Max)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Real-Time Output Cards & Stress Gauge -->
+                <div class="sim-outputs-col">
+                    <div class="sim-kpi-grid">
+                        <div class="sim-kpi-card sim-card-roi">
+                            <span class="sim-kpi-label">Simulated Focus ROI</span>
+                            <span class="sim-kpi-num primary-accent" id="sim-roi-val">₹125 / hr</span>
+                            <span class="sim-kpi-sub" id="sim-roi-desc">₹500 budget ÷ 4.0 study hrs</span>
+                        </div>
+
+                        <div class="sim-kpi-card sim-card-monthly">
+                            <span class="sim-kpi-label">Projected 30-Day Focus</span>
+                            <span class="sim-kpi-num study-accent" id="sim-monthly-study">120.0 hrs</span>
+                            <span class="sim-kpi-sub" id="sim-monthly-spend">At ₹15,000 monthly spend</span>
+                        </div>
+                    </div>
+
+                    <!-- Simulated Stress Gauge Card -->
+                    <div class="sim-stress-card">
+                        <div class="sim-stress-header">
+                            <div class="sim-stress-title">
+                                <span class="sim-icon">🧠</span>
+                                <span>Simulated Burnout &amp; Stress Index</span>
+                            </div>
+                            <span class="sim-stress-pill status-optimal" id="sim-stress-pill">Optimal Flow 🟢</span>
+                        </div>
+                        <div class="sim-stress-meter-track">
+                            <div class="sim-stress-meter-fill fill-optimal" id="sim-stress-fill" style="width: 28%"></div>
+                        </div>
+                        <div class="sim-stress-footer">
+                            <span id="sim-stress-num">Score: <strong>28 / 100</strong></span>
+                            <span id="sim-stress-hint" class="sim-stress-hint">Balanced academic output &amp; comfortable budget ratio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MILESTONES & ACHIEVEMENTS PANEL ================= -->
+        <!-- ================= MILESTONES & ACHIEVEMENTS PANEL ================= -->
+        <section class="card milestones-card" id="milestones-section">
+            <div class="milestones-header">
+                <div class="milestones-title-wrap">
+                    <span class="card-icon">🏆</span>
+                    <div>
+                        <h2>Milestones &amp; Badges</h2>
+                        <p class="milestones-sub">Unlock academic focus and financial discipline badges</p>
+                    </div>
+                </div>
+                <div class="milestones-summary-badge" id="milestones-unlocked-count">
+                    <span>0 / 16 Unlocked</span>
+                </div>
+            </div>
+
+            <!-- Gamified User Level & XP Banner -->
+            <div class="tallyforge-level-banner" id="tallyforge-level-banner">
+                <div class="level-badge-avatar" id="level-badge-avatar">
+                    <span class="level-icon" id="user-level-icon">🥉</span>
+                    <div class="level-number-tag" id="user-level-tag">LVL 1</div>
+                </div>
+                <div class="level-info-col">
+                    <div class="level-name-row">
+                        <span class="level-title" id="user-level-title">Novice Scholar</span>
+                        <span class="level-xp-summary" id="user-xp-summary">0 / 150 XP (0%)</span>
+                    </div>
+                    <div class="level-progress-track">
+                        <div class="level-progress-fill" id="user-level-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="level-meta-row">
+                        <span id="user-total-xp-text">⚡ Lifetime XP: <strong>0 XP</strong></span>
+                        <span id="user-next-rank-text">Next: Focused Apprentice (+150 XP)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="milestones-filter-bar" role="tablist" aria-label="Filter Badges">
+                <button type="button" class="badge-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+                    <span>🌟 All Badges</span>
+                    <span class="filter-count" id="count-filter-all">16</span>
+                </button>
+                <button type="button" class="badge-filter-btn" data-filter="study" role="tab" aria-selected="false">
+                    <span>⏱️ Study Focus</span>
+                    <span class="filter-count" id="count-filter-study">6</span>
+                </button>
+                <button type="button" class="badge-filter-btn" data-filter="financial" role="tab" aria-selected="false">
+                    <span>💸 Financial Control</span>
+                    <span class="filter-count" id="count-filter-financial">4</span>
+                </button>
+                <button type="button" class="badge-filter-btn" data-filter="streaks" role="tab" aria-selected="false">
+                    <span>🔥 Streaks &amp; Masteries</span>
+                    <span class="filter-count" id="count-filter-streaks">6</span>
+                </button>
+                <button type="button" class="badge-filter-btn" data-filter="unlocked" role="tab" aria-selected="false">
+                    <span>✨ Unlocked Only</span>
+                    <span class="filter-count" id="count-filter-unlocked">0</span>
+                </button>
+            </div>
+
+            <!-- Dynamic 3D Milestones Grid -->
+            <div class="milestones-grid" id="milestones-grid">
+                <!-- Badges dynamically rendered and updated via script.js -->
+            </div>
+        </section>
+
+        <!-- ================= YEARLY ACTIVITY MATRIX SECTION ================= -->
+        <section class="card matrix-card" id="yearly-matrix-section">
+            <div class="matrix-card-header">
+                <div class="matrix-title-group">
+                    <div class="matrix-title-row">
+                        <span class="card-icon">🗓️</span>
+                        <h2>Yearly Activity Matrix</h2>
+                    </div>
+                    <p class="matrix-subtitle">12-month calendar heatmap &bull; Click any day block to inspect and isolate historical data</p>
+                </div>
+
+                <!-- Matrix Controls Toolbar -->
+                <div class="matrix-toolbar">
+                    <div class="year-switcher">
+                        <button type="button" class="year-nav-btn" id="btn-matrix-prev-year" aria-label="Previous Year" title="View Previous Year">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <span class="year-label" id="matrix-year-val">2026</span>
+                        <button type="button" class="year-nav-btn" id="btn-matrix-next-year" aria-label="Next Year" title="View Next Year">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="matrix-mode-toggle" role="group" aria-label="Heatmap Mode Toggle">
+                        <button type="button" class="mode-btn active" id="btn-matrix-mode-study" data-mode="study" title="Study Consistency Heatmap (Green scale)">
+                            <span class="mode-indicator dot-study"></span>
+                            <span>Study Consistency</span>
+                        </button>
+                        <button type="button" class="mode-btn" id="btn-matrix-mode-expense" data-mode="expense" title="Expense Load Heatmap (Violet scale)">
+                            <span class="mode-indicator dot-expense"></span>
+                            <span>Expense Load</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annual Summary Pills -->
+            <div class="matrix-stats-ribbon">
+                <div class="matrix-stat-item">
+                    <span class="m-stat-label">Active Days</span>
+                    <span class="m-stat-val" id="matrix-stat-active-days">0 days</span>
+                </div>
+                <div class="matrix-stat-item">
+                    <span class="m-stat-label">Longest Study Streak</span>
+                    <span class="m-stat-val" id="matrix-stat-streak">0 days</span>
+                </div>
+                <div class="matrix-stat-item">
+                    <span class="m-stat-label">Annual Study</span>
+                    <span class="m-stat-val study-accent" id="matrix-stat-total-study">0.0 hrs</span>
+                </div>
+                <div class="matrix-stat-item">
+                    <span class="m-stat-label">Annual Spend</span>
+                    <span class="m-stat-val expense-accent" id="matrix-stat-total-expense">₹0</span>
+                </div>
+            </div>
+
+            <!-- Heatmap 12-Month Calendar Container -->
+            <div class="heatmap-wrapper">
+                <div class="heatmap-months-grid" id="heatmap-months-grid">
+                    <!-- Dynamically generated 12 months with day grid cells -->
+                </div>
+            </div>
+
+            <!-- Matrix Footer & Legend -->
+            <div class="matrix-footer">
+                <div class="matrix-footer-info">
+                    <span class="info-icon">💡</span>
+                    <span id="matrix-footer-hint">Hover over day blocks for metrics &bull; Click to isolate dashboard KPIs & charts</span>
+                </div>
+                <div class="heatmap-legend" id="heatmap-legend">
+                    <span class="legend-text">Less</span>
+                    <div class="legend-cells">
+                        <div class="legend-cell level-0" title="Level 0: Inactive"></div>
+                        <div class="legend-cell level-1" title="Level 1"></div>
+                        <div class="legend-cell level-2" title="Level 2"></div>
+                        <div class="legend-cell level-3" title="Level 3"></div>
+                        <div class="legend-cell level-4" title="Level 4"></div>
+                    </div>
+                    <span class="legend-text">More</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= INTERACTIVE TAG CLOUD COMPONENT ================= -->
+        <section class="card tag-cloud-card" id="tag-cloud-card">
+            <div class="tag-cloud-header">
+                <div class="tag-cloud-title-group">
+                    <span class="card-icon">🏷️</span>
+                    <div>
+                        <h3>Interactive Tag Cloud</h3>
+                        <p class="tag-cloud-subtitle">Filter your entire analytics stream by focus context or spend tags</p>
+                    </div>
+                </div>
+                <button type="button" id="btn-clear-tag-filter" class="btn-clear-filter hidden">
+                    ✕ Clear Tag Filter
+                </button>
+            </div>
+            <div class="tag-cloud-pills" id="tag-cloud-pills">
+                <!-- Dynamically populated tag pills -->
+            </div>
+        </section>
+
+        <main class="container" id="dashboard-main-container">
+            <!-- Left Column: Forms -->
+            <div class="card form-card" id="form-card-column">
+                <div id="expense-form-box" class="module-box">
+                    <div class="card-header">
+                        <span class="card-icon">💸</span>
+                        <h2>Log Expense</h2>
+                    </div>
+                    <form id="expense-form">
+                        <div class="form-group">
+                            <label for="exp-category">Category</label>
+                            <input type="text" id="exp-category" placeholder="e.g. Food, Books, Transport" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="exp-amount">Amount (₹)</label>
+                                <input type="number" id="exp-amount" placeholder="e.g. 250" min="1" step="any" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exp-date">Date</label>
+                                <input type="date" id="exp-date" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exp-tags">Custom Tags (optional)</label>
+                            <input type="text" id="exp-tags" placeholder="e.g. #Snacks, #Dorm, #CafeStudy">
+                        </div>
+                        <button type="submit" id="btn-expense" class="btn btn-primary">
+                            <span>+ Add Expense</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="divider" id="forms-divider"></div>
+
+                <div id="study-form-box" class="module-box">
+                    <div class="card-header">
+                        <span class="card-icon">⏱️</span>
+                        <h2>Log Study Session</h2>
+                    </div>
+                    <form id="study-form">
+                        <div class="form-group">
+                            <label for="std-subject">Subject</label>
+                            <input type="text" id="std-subject" placeholder="e.g. Data Structures, Python" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="std-hours">Hours Spent</label>
+                                <input type="number" id="std-hours" placeholder="e.g. 2.5" step="any" min="0.01" max="24" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="std-date">Date</label>
+                                <input type="date" id="std-date" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="std-tags">Custom Tags (optional)</label>
+                            <input type="text" id="std-tags" placeholder="e.g. #ExamPrep, #DeepWork, #Project">
+                        </div>
+                        <button type="submit" id="btn-study" class="btn btn-success">
+                            <span>+ Add Study Log</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Charts & Tag Analytics -->
+            <div class="card charts-card" id="charts-card-column">
+                <div class="chart-section" id="expense-chart-box">
+                    <div class="chart-header">
+                        <div class="chart-header-left">
+                            <span class="card-icon">📊</span>
+                            <div>
+                                <h2>Expense Breakdown</h2>
+                                <p class="chart-subtitle" id="expense-chart-subtitle">Distribution by category</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="divider" id="charts-divider"></div>
+
+                <div class="chart-section" id="study-chart-box">
+                    <div class="chart-header">
+                        <div class="chart-header-left">
+                            <span class="card-icon">📈</span>
+                            <div>
+                                <h2>Study Hours Trend</h2>
+                                <p class="chart-subtitle" id="study-chart-subtitle">Hours invested per subject</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="studyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ================= AUTOMATED WEEKLY PERFORMANCE DIGEST ================= -->
+        <section class="card weekly-digest-card" id="weekly-digest-section">
+            <div class="digest-card-header">
+                <div class="digest-title-group">
+                    <div class="digest-ai-badge">
+                        <span class="ai-sparkle">⚡</span>
+                        <span>AUTOMATED PERFORMANCE DIGEST</span>
+                    </div>
+                    <h2>Weekly Insight Digest</h2>
+                    <p class="digest-subtitle">Week-over-week discipline metrics, spend-to-focus efficiency &amp; habit trends</p>
+                </div>
+                <div class="digest-period-pill" id="digest-period-label">Current Active Week</div>
+            </div>
+
+            <div class="digest-stats-grid">
+                <div class="d-stat-box">
+                    <span class="d-stat-label">Week Focus Hours</span>
+                    <div class="d-stat-val-row">
+                        <span class="d-stat-num study-accent" id="digest-study-val">0.0 hrs</span>
+                        <span class="d-stat-trend" id="digest-study-trend">↑ 0%</span>
+                    </div>
+                    <span class="d-stat-desc" id="digest-study-sub">vs previous 7 days</span>
+                </div>
+
+                <div class="d-stat-box">
+                    <span class="d-stat-label">Week Financial Spend</span>
+                    <div class="d-stat-val-row">
+                        <span class="d-stat-num expense-accent" id="digest-expense-val">₹0</span>
+                        <span class="d-stat-trend" id="digest-expense-trend">↓ 0%</span>
+                    </div>
+                    <span class="d-stat-desc" id="digest-expense-sub">vs previous 7 days</span>
+                </div>
+
+                <div class="d-stat-box">
+                    <span class="d-stat-label">Spend-to-Study Efficiency</span>
+                    <div class="d-stat-val-row">
+                        <span class="d-stat-num primary-accent" id="digest-efficiency-val">₹0 / hr</span>
+                        <span class="d-stat-trend" id="digest-efficiency-trend">Optimal</span>
+                    </div>
+                    <span class="d-stat-desc" id="digest-efficiency-sub">Cost per study hour</span>
+                </div>
+            </div>
+
+            <div class="digest-insights-container">
+                <div class="insight-item">
+                    <div class="insight-icon-box">📊</div>
+                    <div class="insight-text-wrap">
+                        <h4 class="insight-title">Weekend vs. Weekday Pattern</h4>
+                        <p class="insight-text" id="digest-insight-1">Calculating your spending and study distribution across weekdays and weekends...</p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon-box">🎯</div>
+                    <div class="insight-text-wrap">
+                        <h4 class="insight-title">Top Subject &amp; Tag Velocity</h4>
+                        <p class="insight-text" id="digest-insight-2">Analyzing your most active focus tags and subject velocity this week...</p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon-box">💡</div>
+                    <div class="insight-text-wrap">
+                        <h4 class="insight-title">Discipline Recommendation</h4>
+                        <p class="insight-text" id="digest-insight-3">Analyzing your habit trajectory to recommend peak focus optimization...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 4. FLOATING DAY INSPECTOR TOOLTIP                         -->
+    <!-- ========================================================= -->
+    <div id="day-inspector-tooltip" class="day-inspector-tooltip hidden" aria-hidden="true">
+        <div class="tooltip-header">
+            <span class="tooltip-date" id="tooltip-date-val">Oct 14, 2026</span>
+            <span class="tooltip-badge" id="tooltip-day-badge">Wednesday</span>
+        </div>
+        <div class="tooltip-metrics">
+            <div class="t-metric-row">
+                <span class="t-metric-label">⏱️ Study Hours:</span>
+                <strong class="t-metric-val study-accent" id="tooltip-study-val">4.5 hrs</strong>
+            </div>
+            <div class="t-metric-row">
+                <span class="t-metric-label">💸 Expenses:</span>
+                <strong class="t-metric-val expense-accent" id="tooltip-expense-val">₹320</strong>
+            </div>
+        </div>
+        <div class="tooltip-tags" id="tooltip-tags"></div>
+        <div class="tooltip-hint">Click to filter dashboard metrics to this date</div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 5. DAY DETAIL INSPECTOR MODAL / FLYOUT                    -->
+    <!-- ========================================================= -->
+    <div id="day-inspector-modal" class="day-inspector-modal-overlay hidden" aria-hidden="true">
+        <div class="day-inspector-dialog">
+            <div class="inspector-modal-header">
+                <div class="inspector-modal-title-wrap">
+                    <span class="inspector-modal-icon">📅</span>
+                    <div>
+                        <h3 id="inspector-modal-date">Date Inspection</h3>
+                        <p class="inspector-modal-sub" id="inspector-modal-dayname">Full daily breakdown</p>
+                    </div>
+                </div>
+                <button type="button" class="btn-close-modal" id="btn-close-inspector-modal" aria-label="Close Inspector">✕</button>
+            </div>
+
+            <div class="inspector-kpi-row">
+                <div class="inspector-kpi-card">
+                    <span class="kpi-tag">Total Study</span>
+                    <span class="kpi-num study-accent" id="inspector-modal-study-hours">0.0 hrs</span>
+                </div>
+                <div class="inspector-kpi-card">
+                    <span class="kpi-tag">Total Spent</span>
+                    <span class="kpi-num expense-accent" id="inspector-modal-expense-amt">₹0</span>
+                </div>
+            </div>
+
+            <!-- Itemized Lists with Tag Badges -->
+            <div class="inspector-lists-container">
+                <div class="inspector-list-box">
+                    <div class="list-box-title">
+                        <span>⏱️ Study Sessions</span>
+                    </div>
+                    <div class="inspector-items-list" id="inspector-study-list">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <div class="inspector-list-box">
+                    <div class="list-box-title">
+                        <span>💸 Logged Expenses</span>
+                    </div>
+                    <div class="inspector-items-list" id="inspector-expense-list">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="inspector-actions">
+                <button type="button" id="btn-inspector-filter" class="btn btn-primary btn-full">
+                    <span>Filter Dashboard to this Date</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 6. BADGE UNLOCK CELEBRATION MODAL OVERLAY                 -->
+    <!-- ========================================================= -->
+    <div id="badge-celebration-modal" class="celebration-modal-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
+        <canvas id="celebration-confetti-canvas" class="celebration-confetti-canvas"></canvas>
+        <div class="celebration-dialog">
+            <div class="celebration-sunburst" aria-hidden="true"></div>
+            <div class="celebration-header">
+                <span class="celebration-sparkle-tag">✨ NEW ACHIEVEMENT UNLOCKED! ✨</span>
+            </div>
+            <div class="celebration-badge-hero">
+                <div class="celebration-badge-bounce" id="celebration-badge-icon">👑</div>
+                <div class="celebration-tier-pill" id="celebration-badge-tier">🥇 Gold Tier</div>
+            </div>
+            <h3 class="celebration-badge-title" id="celebration-badge-name">Century Club</h3>
+            <p class="celebration-badge-desc" id="celebration-badge-desc">Accumulate 100+ total lifetime study hours</p>
+            
+            <div class="celebration-rewards-row">
+                <div class="reward-pill xp-pill">
+                    <span class="reward-icon">⚡</span>
+                    <span id="celebration-xp-award">+300 XP Earned</span>
+                </div>
+                <div class="reward-pill cat-pill" id="celebration-cat-pill">
+                    <span class="reward-icon">📚</span>
+                    <span id="celebration-cat-name">Study Focus</span>
+                </div>
+            </div>
+
+            <div class="celebration-quote-card">
+                <div class="quote-mark">“</div>
+                <p class="quote-body" id="celebration-quote-text">We are what we repeatedly do. Excellence, then, is not an act, but a habit.</p>
+                <span class="quote-author" id="celebration-quote-author">— Aristotle</span>
+            </div>
+
+            <div class="celebration-actions">
+                <button type="button" class="btn btn-secondary" id="btn-celebration-share">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                    <span>Share Achievement</span>
+                </button>
+                <button type="button" class="btn btn-primary btn-glow" id="btn-celebration-dismiss">
+                    <span>Claim &amp; Continue ⚡</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 7. BADGE DETAIL INSPECTOR DRAWER / FLYOUT                 -->
+    <!-- ========================================================= -->
+    <div id="badge-inspector-drawer" class="badge-inspector-drawer-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="badge-drawer-backdrop" id="badge-drawer-backdrop"></div>
+        <div class="badge-drawer-panel">
+            <div class="badge-drawer-header">
+                <div class="drawer-header-left">
+                    <span class="drawer-header-title">Achievement Dossier</span>
+                    <span class="badge-rarity-pill" id="inspector-badge-tier-pill">🥇 Gold Tier</span>
+                </div>
+                <button type="button" class="btn-close-drawer" id="btn-close-badge-drawer" aria-label="Close Dossier">✕</button>
+            </div>
+
+            <div class="drawer-body">
+                <div class="drawer-hero-badge">
+                    <div class="drawer-icon-glow" id="inspector-icon-glow">
+                        <div class="drawer-badge-icon" id="inspector-badge-icon">👑</div>
+                    </div>
+                    <h3 class="drawer-badge-title" id="inspector-badge-name">Century Club</h3>
+                    <div class="drawer-badge-pills">
+                        <span class="pill-category" id="inspector-badge-category">Study Focus</span>
+                        <span class="pill-status" id="inspector-badge-status">Locked 🔒</span>
+                    </div>
+                </div>
+
+                <div class="drawer-section">
+                    <h4 class="drawer-section-title">📜 Achievement Lore</h4>
+                    <p class="drawer-lore-text" id="inspector-badge-lore">The triple-digit echelon. 100 hours of focused dedication places you among top-tier scholars.</p>
+                </div>
+
+                <div class="drawer-section">
+                    <div class="drawer-progress-header">
+                        <h4 class="drawer-section-title">🎯 Objective &amp; Live Tracking</h4>
+                        <span class="drawer-prog-pct" id="inspector-badge-pct">0%</span>
+                    </div>
+                    <p class="drawer-obj-desc" id="inspector-badge-desc">Accumulate 100+ total lifetime study hours</p>
+                    <div class="drawer-progress-bar">
+                        <div class="drawer-progress-fill" id="inspector-badge-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="drawer-metrics-row">
+                        <span class="metric-col" id="inspector-badge-current-val">Current: 0.0 hrs</span>
+                        <span class="metric-col" id="inspector-badge-target-val">Target: 100.0 hrs</span>
+                    </div>
+                </div>
+
+                <div class="drawer-section">
+                    <h4 class="drawer-section-title">💡 How to Earn &amp; Status</h4>
+                    <div class="drawer-instructions-box" id="inspector-badge-instructions">
+                        <!-- Step-by-step instructions or unlocked timestamp -->
+                    </div>
+                </div>
+
+                <div class="drawer-section reward-section">
+                    <div class="drawer-reward-box">
+                        <div class="reward-xp-val" id="inspector-badge-xp">+300 XP</div>
+                        <div class="reward-xp-label">Contributes to your overall TallyForge Master Level</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="drawer-footer">
+                <button type="button" class="btn btn-secondary" id="btn-drawer-action">
+                    <span>⚡ Quick Action</span>
+                </button>
+                <button type="button" class="btn btn-primary" id="btn-drawer-close">
+                    <span>Close Dossier</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 8. FLOATING DOCK NAVIGATION (macOS-Style Bottom Bar)       -->
+    <!-- ========================================================= -->
+    <nav class="floating-dock-nav hidden" id="floating-dock" aria-label="Quick View Navigation">
+        <div class="dock-indicator-pill" id="dock-pill"></div>
+        <button type="button" class="dock-tab active" data-view="dashboard" aria-label="Overview Dashboard">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+            </svg>
+            <span class="dock-tooltip">Dashboard</span>
+        </button>
+        <button type="button" class="dock-tab" data-view="matrix" aria-label="Activity Matrix">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <path d="M8 14h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M16 14h.01"></path>
+                <path d="M8 18h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M16 18h.01"></path>
+            </svg>
+            <span class="dock-tooltip">Activity Matrix</span>
+        </button>
+        <button type="button" class="dock-tab" data-view="milestones" aria-label="Milestones">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+            </svg>
+            <span class="dock-tooltip">Milestones</span>
+        </button>
+        <button type="button" class="dock-tab" data-view="expenses" aria-label="Expenses">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <span class="dock-tooltip">Expenses</span>
+        </button>
+        <button type="button" class="dock-tab" data-view="study" aria-label="Study Logs">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span class="dock-tooltip">Study Logs</span>
+        </button>
+        <button type="button" class="dock-tab" data-view="analytics" aria-label="Analytics">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"></path>
+                <path d="m19 9-5 5-4-4-3 3"></path>
+            </svg>
+            <span class="dock-tooltip">Analytics</span>
+        </button>
+    </nav>
+
+    <footer class="app-footer hidden" id="app-footer">
+        <p>TallyForge &bull; Dual-Stream Productivity &amp; Expense Analytics &bull; Live Chart.js Visualizations</p>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="tallyforge-toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

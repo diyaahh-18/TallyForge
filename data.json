@@ -1,0 +1,575 @@
+{
+    "users": [
+        {
+            "username": "demo",
+            "password": "scrypt:32768:8:1$v1W89ibb5iFXpvRM$6b32ab88e401069adf2bc031598bde6f28961800dc2c64496df939dc95e612e6650b52a50d083baad10641881bee0a71aacdd1b805e453df191b99e1f5910fa3"
+        },
+        {
+            "username": "diya",
+            "password": "scrypt:32768:8:1$DZwy1vNe9xYzoB4b$93c8ec89a15b6771468bc6d8a5486da4e543720fe0f280a215035acd79d37590b2814604b76c5af92c100937ee09b47746c87ce4f53491c4e387ed68b2025eb3"
+        },
+        {
+            "username": "test_streak_user",
+            "password": "scrypt:32768:8:1$SDQl8Ci13bfda2L8$d2fbf7bf9fc8c23c164497443253c3fbe27b4851c47002010e5f4c661af15e80ba7fcdcfc94b0902b9556fdffcc01f4e9737d24b8c00b55f7a15913fe99ac013"
+        },
+        {
+            "username": "sejal",
+            "password": "scrypt:32768:8:1$1opeSai8BIcNe9NM$8500516ed7d5bd796dd1d32e0466ecb115af465179c4ff0da5e9b9066c10595c8bcc532d839c14b6244536a7e763f2eec95aba4c19d34be5ddaa754ffc3e38c1"
+        }
+    ],
+    "expenses": [
+        {
+            "username": "demo",
+            "category": "Food & Cafe",
+            "amount": "450",
+            "date": "2026-09-20",
+            "tags": [
+                "#CafeStudy",
+                "#Snacks"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Books & Stationery",
+            "amount": "820",
+            "date": "2026-09-21",
+            "tags": [
+                "#Textbooks",
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Transport",
+            "amount": "250",
+            "date": "2026-09-21",
+            "tags": [
+                "#Campus",
+                "#Transit"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Subscriptions",
+            "amount": "399",
+            "date": "2026-09-21",
+            "tags": [
+                "#Tools",
+                "#Software"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Coffee and Snacks",
+            "amount": "180",
+            "date": "2026-09-21",
+            "tags": [
+                "#Coffee",
+                "#DeepWork"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Books",
+            "amount": "500",
+            "date": "2026-09-21",
+            "tags": [
+                "#ExamPrep",
+                "#Textbooks"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Coffee",
+            "amount": "400",
+            "date": "2026-09-21",
+            "tags": [
+                "#CafeStudy",
+                "#Coffee"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Online Courses",
+            "amount": "1299",
+            "date": "2026-08-15",
+            "tags": [
+                "#Certification",
+                "#Python"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Textbooks",
+            "amount": "1450",
+            "date": "2026-08-16",
+            "tags": [
+                "#Textbooks",
+                "#Midterms"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Desk Setup",
+            "amount": "3200",
+            "date": "2026-07-10",
+            "tags": [
+                "#Dorm",
+                "#Setup"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Cafe Study",
+            "amount": "350",
+            "date": "2026-09-10",
+            "tags": [
+                "#CafeStudy",
+                "#Snacks"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Stationery",
+            "amount": "620",
+            "date": "2026-09-18",
+            "tags": [
+                "#ExamPrep",
+                "#Supplies"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Snacks & Drinks",
+            "amount": "280",
+            "date": "2026-09-22",
+            "tags": [
+                "#Snacks",
+                "#Dorm"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Software Tools",
+            "amount": "899",
+            "date": "2026-09-23",
+            "tags": [
+                "#Software",
+                "#Tools"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Cafe & Brunch",
+            "amount": "560",
+            "date": "2026-09-24",
+            "tags": [
+                "#CafeStudy",
+                "#Weekend"
+            ]
+        },
+        {
+            "username": "diya",
+            "category": "Food",
+            "amount": "2000",
+            "date": "2026-09-24",
+            "tags": [
+                "#Food",
+                "#Dorm"
+            ]
+        },
+        {
+            "username": "diya",
+            "category": "Stationary",
+            "amount": "2300",
+            "date": "2026-09-24",
+            "tags": [
+                "#Supplies",
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "diya",
+            "category": "Transport",
+            "amount": "500",
+            "date": "2026-09-24",
+            "tags": [
+                "#Transit"
+            ]
+        },
+        {
+            "username": "diya",
+            "category": "Clothes",
+            "amount": "1000",
+            "date": "2026-09-24",
+            "tags": [
+                "#Shopping"
+            ]
+        },
+        {
+            "username": "diya",
+            "category": "Food",
+            "amount": "1000.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#Food"
+            ]
+        },
+        {
+            "username": "test_streak_user",
+            "category": "Stationery",
+            "amount": "150.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#Supplies",
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Stationery",
+            "amount": "150.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#Supplies",
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "sejal",
+            "category": "Diya",
+            "amount": "1000.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#Food"
+            ]
+        },
+        {
+            "username": "sejal",
+            "category": "Shopping",
+            "amount": "500.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#dryshampoo"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Coffee",
+            "amount": "250.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Coffee",
+            "amount": "250.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Coffee",
+            "amount": "250.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Food",
+            "amount": "350.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#pizza"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Coffee",
+            "amount": "250.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "category": "Pizza",
+            "amount": "400.0",
+            "date": "2026-09-24",
+            "tags": []
+        },
+        {
+            "username": "demo",
+            "category": "Coke",
+            "amount": "200.0",
+            "date": "2026-09-24",
+            "tags": []
+        },
+        {
+            "username": "demo",
+            "category": "Ai",
+            "amount": "500.0",
+            "date": "2026-09-24",
+            "tags": []
+        }
+    ],
+    "study": [
+        {
+            "username": "demo",
+            "subject": "Data Structures",
+            "hours": "3.5",
+            "date": "2026-09-20",
+            "tags": [
+                "#ExamPrep",
+                "#DeepWork"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Web Development",
+            "hours": "4.0",
+            "date": "2026-09-21",
+            "tags": [
+                "#Project",
+                "#Frontend"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Machine Learning",
+            "hours": "2.5",
+            "date": "2026-09-21",
+            "tags": [
+                "#AI",
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Mathematics",
+            "hours": "2.0",
+            "date": "2026-09-21",
+            "tags": [
+                "#Midterms",
+                "#Calculus"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Algorithms",
+            "hours": "2.5",
+            "date": "2026-09-21",
+            "tags": [
+                "#ExamPrep",
+                "#DeepWork"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Python Advanced",
+            "hours": "5.5",
+            "date": "2026-08-15",
+            "tags": [
+                "#Python",
+                "#DeepWork"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Database Design",
+            "hours": "4.0",
+            "date": "2026-08-16",
+            "tags": [
+                "#SQL",
+                "#Project"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "React & Frontend",
+            "hours": "6.0",
+            "date": "2026-07-10",
+            "tags": [
+                "#Frontend",
+                "#Project"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Deep Learning",
+            "hours": "3.0",
+            "date": "2026-09-10",
+            "tags": [
+                "#AI",
+                "#Research"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "System Architecture",
+            "hours": "4.5",
+            "date": "2026-09-18",
+            "tags": [
+                "#DeepWork",
+                "#Systems"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Cloud Computing",
+            "hours": "3.0",
+            "date": "2026-09-22",
+            "tags": [
+                "#Cloud",
+                "#Certification"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "API Security",
+            "hours": "2.5",
+            "date": "2026-09-23",
+            "tags": [
+                "#Security",
+                "#DeepWork"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Data Structures",
+            "hours": "4.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep",
+                "#Algorithms"
+            ]
+        },
+        {
+            "username": "diya",
+            "subject": "Maths",
+            "hours": "2.25",
+            "date": "2026-09-24",
+            "tags": [
+                "#Midterms"
+            ]
+        },
+        {
+            "username": "diya",
+            "subject": "C Programming",
+            "hours": "3.25",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep",
+                "#Coding"
+            ]
+        },
+        {
+            "username": "diya",
+            "subject": "Maths",
+            "hours": "3.25",
+            "date": "2026-09-24",
+            "tags": [
+                "#Maths"
+            ]
+        },
+        {
+            "username": "diya",
+            "subject": "Maths",
+            "hours": "2.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "test_streak_user",
+            "subject": "Algorithms",
+            "hours": "2.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#Examprep#dsa"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Algorithms",
+            "hours": "2.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep",
+                "#DSA"
+            ]
+        },
+        {
+            "username": "sejal",
+            "subject": "Yoga",
+            "hours": "1.0",
+            "date": "2026-09-24",
+            "tags": []
+        },
+        {
+            "username": "sejal",
+            "subject": "work",
+            "hours": "8.0",
+            "date": "2026-09-24",
+            "tags": []
+        },
+        {
+            "username": "demo",
+            "subject": "Algo",
+            "hours": "3.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Algo",
+            "hours": "3.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Algo",
+            "hours": "3.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Calculas",
+            "hours": "3.0",
+            "date": "2026-09-24",
+            "tags": []
+        },
+        {
+            "username": "demo",
+            "subject": "Algo",
+            "hours": "3.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
+        },
+        {
+            "username": "demo",
+            "subject": "Today All 3 Subjects",
+            "hours": "6.0",
+            "date": "2026-09-24",
+            "tags": []
+        }
+    ]
+}
