@@ -7,10 +7,10 @@
 const THEME_KEY = 'tallyforge_theme';
 
 function getCurrentTheme() {
-    return document.documentElement.getAttribute('data-theme') || 
-           localStorage.getItem(THEME_KEY) || 
-           localStorage.getItem('studyspend_theme') || 
-           'dark';
+    return document.documentElement.getAttribute('data-theme') ||
+        localStorage.getItem(THEME_KEY) ||
+        localStorage.getItem('studyspend_theme') ||
+        'dark';
 }
 
 function updateThemeToggleButtons(theme) {
@@ -38,7 +38,7 @@ function updateThemeToggleButtons(theme) {
 function applyTheme(theme, updateCharts = true) {
     const activeTheme = (theme === 'light') ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', activeTheme);
-    
+
     if (activeTheme === 'light') {
         document.body.classList.add('light-mode');
         document.documentElement.classList.add('light-mode');
@@ -266,7 +266,7 @@ function showLandingView() {
     document.getElementById('app-footer')?.classList.add('hidden');
     document.getElementById('date-filter-banner')?.classList.add('hidden');
     document.getElementById('tag-filter-banner')?.classList.add('hidden');
-    
+
     closeDayInspectorModal();
     closeAuthModal();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -640,7 +640,7 @@ const BADGE_CATALOG = [
         actionLabel: 'Add Tagged Log',
         check: (expenses, study, stats) => {
             const hasTagged = expenses.some(e => Array.isArray(e.tags) && e.tags.length > 0) ||
-                              study.some(s => Array.isArray(s.tags) && s.tags.length > 0);
+                study.some(s => Array.isArray(s.tags) && s.tags.length > 0);
             return {
                 unlocked: hasTagged,
                 current: hasTagged ? 1 : 0,
@@ -1294,7 +1294,7 @@ function shareCelebrationAchievement() {
     if (!currentActiveCelebrationBadge) return;
     const b = currentActiveCelebrationBadge;
     const shareText = `🏆 TallyForge Achievement Unlocked: [${b.title}] (${b.tierName})!\n"${b.desc}"\n⚡ +${b.xp} XP gained toward mastery.\n"${b.quote}" — ${b.author}`;
-    
+
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(shareText).then(() => {
             alert('🎉 Achievement brag copied to clipboard! Share it with your study group.');
@@ -1528,7 +1528,7 @@ function updateMilestones(expenses, study, annualStats) {
         if (isFirstLoad) {
             localStorage.setItem(initKey, 'true');
         }
-    } catch (e) {}
+    } catch (e) { }
 
     // Update Filter Tab Count Badges
     const countAllEl = document.getElementById('count-filter-all');
@@ -1799,7 +1799,7 @@ function filterAndRenderVisuals() {
     }
 
     updateVisualizations(filteredExpenses, filteredStudy);
-    
+
     // Re-render tag cloud to update active classes
     const tagMap = extractAllTags(rawExpensesData, rawStudyData);
     renderTagCloud(tagMap);
@@ -2630,7 +2630,7 @@ function renderStudyChart(studySubjects, subjectTags = {}) {
                     ticks: {
                         font: { family: 'Plus Jakarta Sans', size: 11, weight: 600 },
                         color: isDark ? '#CBD5E1' : '#334155',
-                        callback: function(val) {
+                        callback: function (val) {
                             return `${val}h`;
                         }
                     }
@@ -2720,26 +2720,26 @@ function formatEntityTitle(text) {
 function cleanEntityName(raw) {
     if (!raw) return '';
     const leadingStopwords = [
-        'spent', 'spend', 'paid', 'pay', 'bought', 'buy', 'on', 'for', 'and', 'in', 
-        'to', 'at', 'studied', 'study', 'studying', 'practiced', 'practicing', 
+        'spent', 'spend', 'paid', 'pay', 'bought', 'buy', 'on', 'for', 'and', 'in',
+        'to', 'at', 'studied', 'study', 'studying', 'practiced', 'practicing',
         'worked', 'working', 'revision', 'revising', 'learning', 'learn', 'deep', 'work',
         'of', 'a', 'an', 'the'
     ];
     const trailingStopwords = [
         'hrs', 'hours', 'hour', 'hr', 'h', 'mins', 'minutes', 'minute', 'min', 'm',
-        'rupees', 'rupee', 'rs', 'inr', 'dollars', 'dollar', 'bucks', 'worth', 'of', 
+        'rupees', 'rupee', 'rs', 'inr', 'dollars', 'dollar', 'bucks', 'worth', 'of',
         'for', 'on', 'and', 'in', 'at', 'to', 'a', 'an', 'the'
     ];
-    
+
     let words = raw.replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
-    
+
     while (words.length > 0 && leadingStopwords.includes(words[0].toLowerCase())) {
         words.shift();
     }
     while (words.length > 0 && trailingStopwords.includes(words[words.length - 1].toLowerCase())) {
         words.pop();
     }
-    
+
     return formatEntityTitle(words.join(' '));
 }
 
@@ -3224,7 +3224,7 @@ function setupEventListeners() {
             openAuthModal('register');
         });
     }
-    
+
     // Live Demo trigger buttons
     document.getElementById('btn-hero-demo')?.addEventListener('click', handleDemoLogin);
     document.getElementById('btn-preview-launch')?.addEventListener('click', handleDemoLogin);

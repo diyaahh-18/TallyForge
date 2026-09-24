@@ -1,5 +1,6 @@
 # pyrefly: ignore [missing-import]
 from flask import Flask, send_from_directory, request, jsonify, session
+# pyrefly: ignore [missing-import]
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 import os
@@ -36,7 +37,13 @@ def write_data(data):
 
 # Route to serve the frontend web page from public/index.html
 @app.route('/')
-def home():
+def index():
+    return send_from_directory('public', 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    if os.path.exists(os.path.join('public', path)):
+        return send_from_directory('public', path)
     return send_from_directory('public', 'index.html')
 
 # API Route to check current session / logged in status

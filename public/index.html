@@ -8,17 +8,19 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Chart.js CDN for interactive graphs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script>
         // Immediately apply saved theme to prevent unstyled flash
-        (function() {
+        (function () {
             try {
                 const savedTheme = localStorage.getItem('tallyforge_theme') || localStorage.getItem('studyspend_theme') || 'dark';
                 document.documentElement.setAttribute('data-theme', savedTheme);
-            } catch (e) {}
+            } catch (e) { }
         })();
     </script>
 </head>
@@ -49,7 +51,8 @@
 
                 <div class="landing-nav-actions">
                     <!-- Theme Toggle -->
-                    <button type="button" class="theme-toggle-btn" id="theme-toggle-landing" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Theme">
+                    <button type="button" class="theme-toggle-btn" id="theme-toggle-landing"
+                        aria-label="Toggle dark/light theme" title="Toggle Dark/Light Theme">
                         <span class="theme-icon">🌙</span>
                     </button>
 
@@ -57,16 +60,19 @@
                     <button type="button" class="btn btn-ghost landing-btn-signin" id="btn-landing-signin">
                         <span>Sign In</span>
                     </button>
-                    <button type="button" class="btn btn-gradient-glow landing-btn-getstarted" id="btn-landing-getstarted">
+                    <button type="button" class="btn btn-gradient-glow landing-btn-getstarted"
+                        id="btn-landing-getstarted">
                         <span>Get Started Free</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </button>
 
                     <!-- Mobile Hamburger Menu Button -->
-                    <button type="button" class="mobile-hamburger-btn" id="btn-mobile-nav-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" title="Open Navigation Menu">
+                    <button type="button" class="mobile-hamburger-btn" id="btn-mobile-nav-toggle"
+                        aria-label="Toggle Navigation Menu" aria-expanded="false" title="Open Navigation Menu">
                         <span class="hamburger-bar"></span>
                         <span class="hamburger-bar"></span>
                         <span class="hamburger-bar"></span>
@@ -119,14 +125,17 @@
                     </h1>
 
                     <p class="hero-subtitle">
-                        Built for ambitious students and self-learners. TallyForge synchronizes daily academic focus hours with personal financial tracking into a unified command center — eliminating burnout, ending budget leaks, and visualizing yearly discipline with GitHub-style contribution heatmaps.
+                        Built for ambitious students and self-learners. TallyForge synchronizes daily academic focus
+                        hours with personal financial tracking into a unified command center — eliminating burnout,
+                        ending budget leaks, and visualizing yearly discipline with GitHub-style contribution heatmaps.
                     </p>
 
                     <div class="hero-cta-group">
                         <button type="button" class="btn btn-hero-primary" id="btn-hero-cta">
                             <span class="btn-sparkle-icon">⚡</span>
                             <span>Get Started Free</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
@@ -232,18 +241,89 @@
 
                                 <div class="mock-matrix-grid" id="mock-matrix-grid">
                                     <div class="mock-grid-row">
-                                        <div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-0"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-0"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
                                     </div>
                                     <div class="mock-grid-row">
-                                        <div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-0"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-0"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
                                     </div>
                                     <div class="mock-grid-row">
-                                        <div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-0"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-1"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-2"></div><div class="m-cell lvl-4"></div><div class="m-cell lvl-3"></div><div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-0"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-1"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-2"></div>
+                                        <div class="m-cell lvl-4"></div>
+                                        <div class="m-cell lvl-3"></div>
+                                        <div class="m-cell lvl-4"></div>
                                     </div>
                                 </div>
                                 <div class="mock-heatmap-caption">
-                                    <span>Interactive 12-Month Matrix • Click any historical date to filter full analytics</span>
-                                    <button type="button" class="mock-launch-btn" id="btn-preview-launch">Try Live Heatmap →</button>
+                                    <span>Interactive 12-Month Matrix • Click any historical date to filter full
+                                        analytics</span>
+                                    <button type="button" class="mock-launch-btn" id="btn-preview-launch">Try Live
+                                        Heatmap →</button>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +336,8 @@
                 <div class="section-header-block">
                     <div class="section-tag">ENGINEERED FOR CLARITY</div>
                     <h2 class="section-title">Why Traditional Trackers Fail Students</h2>
-                    <p class="section-desc">Productivity apps ignore your finances, and expense trackers don't understand study burnout. TallyForge bridges the gap with a unified architecture.</p>
+                    <p class="section-desc">Productivity apps ignore your finances, and expense trackers don't
+                        understand study burnout. TallyForge bridges the gap with a unified architecture.</p>
                 </div>
 
                 <div class="problem-solution-grid">
@@ -268,13 +349,15 @@
                         <div class="ps-box problem-box">
                             <div class="box-badge badge-problem">🔴 The Friction</div>
                             <h3 class="box-title">Fragmented App Switching</h3>
-                            <p class="box-text">Juggling standalone study timers, separate budget spreadsheets, and note apps creates cognitive fatigue, leading to tracker abandonment within a week.</p>
+                            <p class="box-text">Juggling standalone study timers, separate budget spreadsheets, and note
+                                apps creates cognitive fatigue, leading to tracker abandonment within a week.</p>
                         </div>
                         <div class="ps-arrow">↓</div>
                         <div class="ps-box solution-box">
                             <div class="box-badge badge-solution">🟢 TallyForge Solution</div>
                             <h3 class="box-title">Dual-Stream Dashboard</h3>
-                            <p class="box-text">Log your focus hours and daily financial expenses in one unified, elegant workspace in under 10 seconds with instantaneous visual feedback.</p>
+                            <p class="box-text">Log your focus hours and daily financial expenses in one unified,
+                                elegant workspace in under 10 seconds with instantaneous visual feedback.</p>
                         </div>
                     </div>
 
@@ -286,13 +369,15 @@
                         <div class="ps-box problem-box">
                             <div class="box-badge badge-problem">🔴 The Friction</div>
                             <h3 class="box-title">Zero Long-Term Momentum</h3>
-                            <p class="box-text">Isolated daily numbers provide zero perspective on seasonal discipline slumps, exam preparation streaks, or recurring weekend spend spikes.</p>
+                            <p class="box-text">Isolated daily numbers provide zero perspective on seasonal discipline
+                                slumps, exam preparation streaks, or recurring weekend spend spikes.</p>
                         </div>
                         <div class="ps-arrow">↓</div>
                         <div class="ps-box solution-box">
                             <div class="box-badge badge-solution">🟢 TallyForge Solution</div>
                             <h3 class="box-title">Annual Matrix &amp; Day Inspector</h3>
-                            <p class="box-text">GitHub-style 12-month calendar heatmap displaying study consistency and expense loads with clickable day inspector modals and instant KPI filtering.</p>
+                            <p class="box-text">GitHub-style 12-month calendar heatmap displaying study consistency and
+                                expense loads with clickable day inspector modals and instant KPI filtering.</p>
                         </div>
                     </div>
 
@@ -304,13 +389,15 @@
                         <div class="ps-box problem-box">
                             <div class="box-badge badge-problem">🔴 The Friction</div>
                             <h3 class="box-title">Silent Budget Overruns</h3>
-                            <p class="box-text">Unmonitored cafe runs, textbook subscriptions, and impulse spending quietly erode student savings while academic burnout builds unnoticed.</p>
+                            <p class="box-text">Unmonitored cafe runs, textbook subscriptions, and impulse spending
+                                quietly erode student savings while academic burnout builds unnoticed.</p>
                         </div>
                         <div class="ps-arrow">↓</div>
                         <div class="ps-box solution-box">
                             <div class="box-badge badge-solution">🟢 TallyForge Solution</div>
                             <h3 class="box-title">Smart Guardrails &amp; Trends</h3>
-                            <p class="box-text">Live Chart.js distribution breakdowns across spending categories and study subjects enable effortless balance between budget and high-value focus.</p>
+                            <p class="box-text">Live Chart.js distribution breakdowns across spending categories and
+                                study subjects enable effortless balance between budget and high-value focus.</p>
                         </div>
                     </div>
                 </div>
@@ -321,14 +408,17 @@
                 <div class="section-header-block">
                     <div class="section-tag">CORE CAPABILITIES</div>
                     <h2 class="section-title">Built for Peak Academic &amp; Financial Discipline</h2>
-                    <p class="section-desc">Every component is engineered with sub-pixel precision to make self-discipline rewarding and intuitive.</p>
+                    <p class="section-desc">Every component is engineered with sub-pixel precision to make
+                        self-discipline rewarding and intuitive.</p>
                 </div>
 
                 <div class="pillars-grid">
                     <div class="pillar-card" id="section-heatmap-feature">
                         <div class="pillar-icon-glow green-glow">🗓️</div>
                         <h3 class="pillar-title">365-Day Activity Matrix</h3>
-                        <p class="pillar-text">Visualize your entire year at a single glance. Switch seamlessly between green study intensity levels and violet expense load scales. Hover for instant metrics or click any date to filter the dashboard.</p>
+                        <p class="pillar-text">Visualize your entire year at a single glance. Switch seamlessly between
+                            green study intensity levels and violet expense load scales. Hover for instant metrics or
+                            click any date to filter the dashboard.</p>
                         <ul class="pillar-feature-list">
                             <li><span class="check-icon">✓</span> Multi-level intensity calculation (Level 0–4)</li>
                             <li><span class="check-icon">✓</span> Active streak &amp; total active days counter</li>
@@ -339,7 +429,9 @@
                     <div class="pillar-card">
                         <div class="pillar-icon-glow indigo-glow">📊</div>
                         <h3 class="pillar-title">Dual-Stream Chart.js Analytics</h3>
-                        <p class="pillar-text">Dynamic doughnut and bar chart visualizers that update instantly upon logging new entries. Automatic palette adaptation ensures breathtaking visuals in both Dark and Light themes.</p>
+                        <p class="pillar-text">Dynamic doughnut and bar chart visualizers that update instantly upon
+                            logging new entries. Automatic palette adaptation ensures breathtaking visuals in both Dark
+                            and Light themes.</p>
                         <ul class="pillar-feature-list">
                             <li><span class="check-icon">✓</span> Category-level financial distribution breakdown</li>
                             <li><span class="check-icon">✓</span> Subject-level focus time investment bars</li>
@@ -350,7 +442,9 @@
                     <div class="pillar-card">
                         <div class="pillar-icon-glow cyan-glow">🎛️</div>
                         <h3 class="pillar-title">Floating Navigation Dock</h3>
-                        <p class="pillar-text">An ultra-sleek macOS-inspired floating dock navigation with fluid magnetic pill animations, allowing instant switching between Overview, Matrix, Expenses, and Study logs.</p>
+                        <p class="pillar-text">An ultra-sleek macOS-inspired floating dock navigation with fluid
+                            magnetic pill animations, allowing instant switching between Overview, Matrix, Expenses, and
+                            Study logs.</p>
                         <ul class="pillar-feature-list">
                             <li><span class="check-icon">✓</span> Smooth sliding backdrop pill indicator</li>
                             <li><span class="check-icon">✓</span> Glassmorphism backdrop blur filter</li>
@@ -387,11 +481,13 @@
                 <div class="cta-banner-card">
                     <div class="cta-ambient-glow" aria-hidden="true"></div>
                     <h2 class="cta-banner-title">Ready to Take Control of Your Time &amp; Budget?</h2>
-                    <p class="cta-banner-subtitle">Start logging your focus sessions and financial outlays today with zero setup friction.</p>
+                    <p class="cta-banner-subtitle">Start logging your focus sessions and financial outlays today with
+                        zero setup friction.</p>
                     <div class="cta-banner-actions">
                         <button type="button" class="btn btn-banner-primary" id="btn-banner-cta">
                             <span>Launch TallyForge Now</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
@@ -444,16 +540,19 @@
         <div class="auth-modal-backdrop" id="auth-modal-backdrop"></div>
         <div class="auth-modal-dialog">
             <!-- Theme Toggle positioned in top-left corner of modal dialog -->
-            <button type="button" class="theme-toggle-btn modal-theme-toggle" id="theme-toggle-modal" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
+            <button type="button" class="theme-toggle-btn modal-theme-toggle" id="theme-toggle-modal"
+                aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
                 <span class="theme-icon">🌙</span>
             </button>
 
-            <button type="button" class="auth-modal-close" id="btn-close-auth-modal" aria-label="Close Authentication Dialog">✕</button>
+            <button type="button" class="auth-modal-close" id="btn-close-auth-modal"
+                aria-label="Close Authentication Dialog">✕</button>
 
             <div class="auth-card-header">
                 <div class="auth-icon">🔐</div>
                 <h2 id="auth-modal-title">Welcome Back</h2>
-                <p id="auth-modal-subtitle" class="auth-subtitle">Sign in to access your personal TallyForge dashboard</p>
+                <p id="auth-modal-subtitle" class="auth-subtitle">Sign in to access your personal TallyForge dashboard
+                </p>
             </div>
 
             <div class="auth-tabs">
@@ -466,11 +565,13 @@
             <form id="modal-login-form" class="auth-form">
                 <div class="form-group">
                     <label for="modal-login-username">Username</label>
-                    <input type="text" id="modal-login-username" placeholder="Enter your username" required autocomplete="username">
+                    <input type="text" id="modal-login-username" placeholder="Enter your username" required
+                        autocomplete="username">
                 </div>
                 <div class="form-group">
                     <label for="modal-login-password">Password</label>
-                    <input type="password" id="modal-login-password" placeholder="Enter your password" required autocomplete="current-password">
+                    <input type="password" id="modal-login-password" placeholder="Enter your password" required
+                        autocomplete="current-password">
                 </div>
                 <button type="submit" id="btn-modal-login" class="btn btn-primary">
                     <span>Sign In to Dashboard</span>
@@ -483,11 +584,13 @@
             <form id="modal-register-form" class="auth-form hidden">
                 <div class="form-group">
                     <label for="modal-register-username">Choose Username</label>
-                    <input type="text" id="modal-register-username" placeholder="Choose your username" minlength="3" required autocomplete="username">
+                    <input type="text" id="modal-register-username" placeholder="Choose your username" minlength="3"
+                        required autocomplete="username">
                 </div>
                 <div class="form-group">
                     <label for="modal-register-password">Create Password</label>
-                    <input type="password" id="modal-register-password" placeholder="Create a password" minlength="4" required autocomplete="new-password">
+                    <input type="password" id="modal-register-password" placeholder="Create a password" minlength="4"
+                        required autocomplete="new-password">
                 </div>
                 <button type="submit" id="btn-modal-register" class="btn btn-success">
                     <span>Create Free Account</span>
@@ -513,7 +616,8 @@
         <div class="header-container">
             <div class="header-left">
                 <!-- Theme Toggle on top-left of Dashboard Header -->
-                <button type="button" class="theme-toggle-btn" id="theme-toggle-header" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
+                <button type="button" class="theme-toggle-btn" id="theme-toggle-header"
+                    aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
                     <span class="theme-icon">🌙</span>
                 </button>
                 <div class="header-content">
@@ -529,7 +633,8 @@
             <div id="user-header-actions" class="user-header-actions">
                 <!-- Return to Landing Page Button -->
                 <button type="button" class="btn-nav-home" id="btn-header-home" title="View Homepage / Landing Page">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                     </svg>
@@ -537,7 +642,8 @@
                 </button>
 
                 <!-- Gamified Active Logging Streak Counter -->
-                <div class="header-streak-badge" id="header-streak-badge" title="Active Study &amp; Expense Logging Streak">
+                <div class="header-streak-badge" id="header-streak-badge"
+                    title="Active Study &amp; Expense Logging Streak">
                     <span class="flame-icon">🔥</span>
                     <span class="streak-text"><strong id="streak-count-text">0</strong> Day Streak</span>
                 </div>
@@ -547,7 +653,8 @@
                     <span class="user-text">Logged in as <strong id="logged-username">—</strong></span>
                 </div>
                 <button type="button" id="btn-logout" class="btn btn-logout">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
                         <line x1="21" y1="12" x2="9" y2="12"></line>
@@ -566,7 +673,8 @@
                     <span class="card-icon vibe-sparkle-icon">✨</span>
                     <div>
                         <h2>Vibe Logger</h2>
-                        <p class="vibe-subtitle">Instant natural language dual-stream logger with automatic entity &amp; tag extraction</p>
+                        <p class="vibe-subtitle">Instant natural language dual-stream logger with automatic entity &amp;
+                            tag extraction</p>
                     </div>
                 </div>
                 <div class="vibe-badge-pill">
@@ -577,10 +685,11 @@
             <form id="vibe-logger-form" class="vibe-form">
                 <div class="vibe-input-wrapper">
                     <span class="vibe-input-icon">🪄</span>
-                    <input type="text" id="vibe-input" class="vibe-input-field" 
-                           placeholder="e.g., Spent ₹250 on coffee and studied Algo for 3.5 hrs #ExamPrep" 
-                           autocomplete="off">
-                    <button type="button" id="btn-vibe-clear" class="btn-vibe-clear hidden" title="Clear input">✕</button>
+                    <input type="text" id="vibe-input" class="vibe-input-field"
+                        placeholder="e.g., Spent ₹250 on coffee and studied Algo for 3.5 hrs #ExamPrep"
+                        autocomplete="off">
+                    <button type="button" id="btn-vibe-clear" class="btn-vibe-clear hidden"
+                        title="Clear input">✕</button>
                     <button type="submit" id="btn-vibe-log" class="btn btn-vibe-submit">
                         <span class="btn-sparkle">⚡</span>
                         <span>Quick Log</span>
@@ -592,7 +701,8 @@
             <div class="vibe-preview-bar" id="vibe-preview-bar">
                 <div class="vibe-preview-label">Live Intent Detection:</div>
                 <div class="vibe-chips-container" id="vibe-chips-container">
-                    <span class="vibe-empty-hint">Type a natural sentence to preview auto-extracted stream metrics...</span>
+                    <span class="vibe-empty-hint">Type a natural sentence to preview auto-extracted stream
+                        metrics...</span>
                 </div>
             </div>
         </section>
@@ -602,20 +712,27 @@
             <div class="date-toolbar-container">
                 <div class="date-toolbar-presets" role="group" aria-label="Date Range Presets">
                     <span class="toolbar-label">⏱️ Timeframe:</span>
-                    <button type="button" class="date-preset-btn active" data-preset="all" id="btn-preset-all">All Time</button>
-                    <button type="button" class="date-preset-btn" data-preset="today" id="btn-preset-today">Today</button>
-                    <button type="button" class="date-preset-btn" data-preset="yesterday" id="btn-preset-yesterday">Yesterday</button>
-                    <button type="button" class="date-preset-btn" data-preset="last7" id="btn-preset-last7">Last 7 Days</button>
-                    <button type="button" class="date-preset-btn" data-preset="thismonth" id="btn-preset-month">This Month</button>
+                    <button type="button" class="date-preset-btn active" data-preset="all" id="btn-preset-all">All
+                        Time</button>
+                    <button type="button" class="date-preset-btn" data-preset="today"
+                        id="btn-preset-today">Today</button>
+                    <button type="button" class="date-preset-btn" data-preset="yesterday"
+                        id="btn-preset-yesterday">Yesterday</button>
+                    <button type="button" class="date-preset-btn" data-preset="last7" id="btn-preset-last7">Last 7
+                        Days</button>
+                    <button type="button" class="date-preset-btn" data-preset="thismonth" id="btn-preset-month">This
+                        Month</button>
                 </div>
 
                 <div class="date-toolbar-custom">
                     <span class="toolbar-label">📅 Custom Date:</span>
                     <div class="custom-date-input-wrap">
-                        <input type="date" id="toolbar-custom-date" class="toolbar-date-input" aria-label="Pick specific date to filter">
+                        <input type="date" id="toolbar-custom-date" class="toolbar-date-input"
+                            aria-label="Pick specific date to filter">
                         <button type="button" id="btn-apply-custom-date" class="btn-date-apply">Filter</button>
                     </div>
-                    <button type="button" id="btn-export-csv" class="btn btn-export-csv" title="Download Dual-Stream CSV Data Export">
+                    <button type="button" id="btn-export-csv" class="btn btn-export-csv"
+                        title="Download Dual-Stream CSV Data Export">
                         <span class="export-icon">📥</span>
                         <span>Export CSV</span>
                     </button>
@@ -634,7 +751,8 @@
             </div>
             <div class="filter-banner-actions">
                 <button type="button" id="btn-clear-date-filter" class="btn-clear-filter">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
@@ -709,13 +827,17 @@
                             <span class="guardrail-icon">🛡️</span>
                             <div>
                                 <span class="guardrail-label">Daily Spending Limit Guardrail</span>
-                                <span class="guardrail-threshold" id="guardrail-spend-threshold">Limit: ₹800.00 / day</span>
+                                <span class="guardrail-threshold" id="guardrail-spend-threshold">Limit: ₹800.00 /
+                                    day</span>
                             </div>
                         </div>
-                        <span class="guardrail-status-badge status-good" id="guardrail-spend-badge">Within Budget 🟢</span>
+                        <span class="guardrail-status-badge status-good" id="guardrail-spend-badge">Within Budget
+                            🟢</span>
                     </div>
                     <div class="guardrail-progress-wrap">
-                        <div class="guardrail-bar"><div class="guardrail-fill" id="guardrail-spend-fill" style="width: 0%"></div></div>
+                        <div class="guardrail-bar">
+                            <div class="guardrail-fill" id="guardrail-spend-fill" style="width: 0%"></div>
+                        </div>
                         <div class="guardrail-values">
                             <span id="guardrail-spend-text">Spent Today: ₹0.00</span>
                             <span id="guardrail-spend-remaining">Remaining: ₹800.00</span>
@@ -730,13 +852,16 @@
                             <span class="guardrail-icon">🎯</span>
                             <div>
                                 <span class="guardrail-label">Daily Study Target Tracker</span>
-                                <span class="guardrail-threshold" id="guardrail-study-threshold">Target: 4.0 hrs / day</span>
+                                <span class="guardrail-threshold" id="guardrail-study-threshold">Target: 4.0 hrs /
+                                    day</span>
                             </div>
                         </div>
                         <span class="guardrail-status-badge status-target" id="target-study-badge">0% Completed</span>
                     </div>
                     <div class="guardrail-progress-wrap">
-                        <div class="guardrail-bar"><div class="guardrail-fill target-fill" id="target-study-fill" style="width: 0%"></div></div>
+                        <div class="guardrail-bar">
+                            <div class="guardrail-fill target-fill" id="target-study-fill" style="width: 0%"></div>
+                        </div>
                         <div class="guardrail-values">
                             <span id="target-study-text">Logged Today: 0.0 hrs</span>
                             <span id="target-study-remaining">Goal: 4.0 hrs</span>
@@ -753,10 +878,12 @@
                     <span class="card-icon">⚡</span>
                     <div>
                         <h2>Live Focus ROI &amp; Stress Simulator</h2>
-                        <p class="sim-subtitle">Simulate custom daily study commitments vs. spending budgets to model your Focus Capital ROI and burnout trajectory</p>
+                        <p class="sim-subtitle">Simulate custom daily study commitments vs. spending budgets to model
+                            your Focus Capital ROI and burnout trajectory</p>
                     </div>
                 </div>
-                <button type="button" id="btn-apply-sim-guardrails" class="btn btn-sim-apply" title="Apply simulated values to active daily guardrails">
+                <button type="button" id="btn-apply-sim-guardrails" class="btn btn-sim-apply"
+                    title="Apply simulated values to active daily guardrails">
                     <span>🛡️ Apply to Live Guardrails</span>
                 </button>
             </div>
@@ -773,7 +900,8 @@
                             </div>
                             <span class="sim-slider-value study-accent" id="sim-study-val">4.0 hrs / day</span>
                         </div>
-                        <input type="range" id="sim-slider-study" class="tallyforge-range-slider slider-study" min="1.0" max="12.0" step="0.5" value="4.0" aria-label="Simulated Daily Study Target">
+                        <input type="range" id="sim-slider-study" class="tallyforge-range-slider slider-study" min="1.0"
+                            max="12.0" step="0.5" value="4.0" aria-label="Simulated Daily Study Target">
                         <div class="sim-slider-ticks">
                             <span>1.0 hr (Light)</span>
                             <span>4.0 hrs (Target)</span>
@@ -791,7 +919,8 @@
                             </div>
                             <span class="sim-slider-value expense-accent" id="sim-budget-val">₹500 / day</span>
                         </div>
-                        <input type="range" id="sim-slider-budget" class="tallyforge-range-slider slider-budget" min="100" max="2000" step="50" value="500" aria-label="Simulated Daily Budget Limit">
+                        <input type="range" id="sim-slider-budget" class="tallyforge-range-slider slider-budget"
+                            min="100" max="2000" step="50" value="500" aria-label="Simulated Daily Budget Limit">
                         <div class="sim-slider-ticks">
                             <span>₹100 (Frugal)</span>
                             <span>₹500 (Balanced)</span>
@@ -827,11 +956,13 @@
                             <span class="sim-stress-pill status-optimal" id="sim-stress-pill">Optimal Flow 🟢</span>
                         </div>
                         <div class="sim-stress-meter-track">
-                            <div class="sim-stress-meter-fill fill-optimal" id="sim-stress-fill" style="width: 28%"></div>
+                            <div class="sim-stress-meter-fill fill-optimal" id="sim-stress-fill" style="width: 28%">
+                            </div>
                         </div>
                         <div class="sim-stress-footer">
                             <span id="sim-stress-num">Score: <strong>28 / 100</strong></span>
-                            <span id="sim-stress-hint" class="sim-stress-hint">Balanced academic output &amp; comfortable budget ratio</span>
+                            <span id="sim-stress-hint" class="sim-stress-hint">Balanced academic output &amp;
+                                comfortable budget ratio</span>
                         </div>
                     </div>
                 </div>
@@ -913,31 +1044,38 @@
                         <span class="card-icon">🗓️</span>
                         <h2>Yearly Activity Matrix</h2>
                     </div>
-                    <p class="matrix-subtitle">12-month calendar heatmap &bull; Click any day block to inspect and isolate historical data</p>
+                    <p class="matrix-subtitle">12-month calendar heatmap &bull; Click any day block to inspect and
+                        isolate historical data</p>
                 </div>
 
                 <!-- Matrix Controls Toolbar -->
                 <div class="matrix-toolbar">
                     <div class="year-switcher">
-                        <button type="button" class="year-nav-btn" id="btn-matrix-prev-year" aria-label="Previous Year" title="View Previous Year">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" class="year-nav-btn" id="btn-matrix-prev-year" aria-label="Previous Year"
+                            title="View Previous Year">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="15 18 9 12 15 6"></polyline>
                             </svg>
                         </button>
                         <span class="year-label" id="matrix-year-val">2026</span>
-                        <button type="button" class="year-nav-btn" id="btn-matrix-next-year" aria-label="Next Year" title="View Next Year">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" class="year-nav-btn" id="btn-matrix-next-year" aria-label="Next Year"
+                            title="View Next Year">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </button>
                     </div>
 
                     <div class="matrix-mode-toggle" role="group" aria-label="Heatmap Mode Toggle">
-                        <button type="button" class="mode-btn active" id="btn-matrix-mode-study" data-mode="study" title="Study Consistency Heatmap (Green scale)">
+                        <button type="button" class="mode-btn active" id="btn-matrix-mode-study" data-mode="study"
+                            title="Study Consistency Heatmap (Green scale)">
                             <span class="mode-indicator dot-study"></span>
                             <span>Study Consistency</span>
                         </button>
-                        <button type="button" class="mode-btn" id="btn-matrix-mode-expense" data-mode="expense" title="Expense Load Heatmap (Violet scale)">
+                        <button type="button" class="mode-btn" id="btn-matrix-mode-expense" data-mode="expense"
+                            title="Expense Load Heatmap (Violet scale)">
                             <span class="mode-indicator dot-expense"></span>
                             <span>Expense Load</span>
                         </button>
@@ -976,7 +1114,8 @@
             <div class="matrix-footer">
                 <div class="matrix-footer-info">
                     <span class="info-icon">💡</span>
-                    <span id="matrix-footer-hint">Hover over day blocks for metrics &bull; Click to isolate dashboard KPIs & charts</span>
+                    <span id="matrix-footer-hint">Hover over day blocks for metrics &bull; Click to isolate dashboard
+                        KPIs & charts</span>
                 </div>
                 <div class="heatmap-legend" id="heatmap-legend">
                     <span class="legend-text">Less</span>
@@ -999,7 +1138,8 @@
                     <span class="card-icon">🏷️</span>
                     <div>
                         <h3>Interactive Tag Cloud</h3>
-                        <p class="tag-cloud-subtitle">Filter your entire analytics stream by focus context or spend tags</p>
+                        <p class="tag-cloud-subtitle">Filter your entire analytics stream by focus context or spend tags
+                        </p>
                     </div>
                 </div>
                 <button type="button" id="btn-clear-tag-filter" class="btn-clear-filter hidden">
@@ -1059,7 +1199,8 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="std-hours">Hours Spent</label>
-                                <input type="number" id="std-hours" placeholder="e.g. 2.5" step="any" min="0.01" max="24" required>
+                                <input type="number" id="std-hours" placeholder="e.g. 2.5" step="any" min="0.01"
+                                    max="24" required>
                             </div>
                             <div class="form-group">
                                 <label for="std-date">Date</label>
@@ -1122,7 +1263,8 @@
                         <span>AUTOMATED PERFORMANCE DIGEST</span>
                     </div>
                     <h2>Weekly Insight Digest</h2>
-                    <p class="digest-subtitle">Week-over-week discipline metrics, spend-to-focus efficiency &amp; habit trends</p>
+                    <p class="digest-subtitle">Week-over-week discipline metrics, spend-to-focus efficiency &amp; habit
+                        trends</p>
                 </div>
                 <div class="digest-period-pill" id="digest-period-label">Current Active Week</div>
             </div>
@@ -1161,7 +1303,8 @@
                     <div class="insight-icon-box">📊</div>
                     <div class="insight-text-wrap">
                         <h4 class="insight-title">Weekend vs. Weekday Pattern</h4>
-                        <p class="insight-text" id="digest-insight-1">Calculating your spending and study distribution across weekdays and weekends...</p>
+                        <p class="insight-text" id="digest-insight-1">Calculating your spending and study distribution
+                            across weekdays and weekends...</p>
                     </div>
                 </div>
 
@@ -1169,7 +1312,8 @@
                     <div class="insight-icon-box">🎯</div>
                     <div class="insight-text-wrap">
                         <h4 class="insight-title">Top Subject &amp; Tag Velocity</h4>
-                        <p class="insight-text" id="digest-insight-2">Analyzing your most active focus tags and subject velocity this week...</p>
+                        <p class="insight-text" id="digest-insight-2">Analyzing your most active focus tags and subject
+                            velocity this week...</p>
                     </div>
                 </div>
 
@@ -1177,7 +1321,8 @@
                     <div class="insight-icon-box">💡</div>
                     <div class="insight-text-wrap">
                         <h4 class="insight-title">Discipline Recommendation</h4>
-                        <p class="insight-text" id="digest-insight-3">Analyzing your habit trajectory to recommend peak focus optimization...</p>
+                        <p class="insight-text" id="digest-insight-3">Analyzing your habit trajectory to recommend peak
+                            focus optimization...</p>
                     </div>
                 </div>
             </div>
@@ -1219,7 +1364,8 @@
                         <p class="inspector-modal-sub" id="inspector-modal-dayname">Full daily breakdown</p>
                     </div>
                 </div>
-                <button type="button" class="btn-close-modal" id="btn-close-inspector-modal" aria-label="Close Inspector">✕</button>
+                <button type="button" class="btn-close-modal" id="btn-close-inspector-modal"
+                    aria-label="Close Inspector">✕</button>
             </div>
 
             <div class="inspector-kpi-row">
@@ -1265,7 +1411,8 @@
     <!-- ========================================================= -->
     <!-- 6. BADGE UNLOCK CELEBRATION MODAL OVERLAY                 -->
     <!-- ========================================================= -->
-    <div id="badge-celebration-modal" class="celebration-modal-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div id="badge-celebration-modal" class="celebration-modal-overlay hidden" aria-hidden="true" role="dialog"
+        aria-modal="true">
         <canvas id="celebration-confetti-canvas" class="celebration-confetti-canvas"></canvas>
         <div class="celebration-dialog">
             <div class="celebration-sunburst" aria-hidden="true"></div>
@@ -1278,7 +1425,7 @@
             </div>
             <h3 class="celebration-badge-title" id="celebration-badge-name">Century Club</h3>
             <p class="celebration-badge-desc" id="celebration-badge-desc">Accumulate 100+ total lifetime study hours</p>
-            
+
             <div class="celebration-rewards-row">
                 <div class="reward-pill xp-pill">
                     <span class="reward-icon">⚡</span>
@@ -1292,13 +1439,15 @@
 
             <div class="celebration-quote-card">
                 <div class="quote-mark">“</div>
-                <p class="quote-body" id="celebration-quote-text">We are what we repeatedly do. Excellence, then, is not an act, but a habit.</p>
+                <p class="quote-body" id="celebration-quote-text">We are what we repeatedly do. Excellence, then, is not
+                    an act, but a habit.</p>
                 <span class="quote-author" id="celebration-quote-author">— Aristotle</span>
             </div>
 
             <div class="celebration-actions">
                 <button type="button" class="btn btn-secondary" id="btn-celebration-share">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
                         <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
                     </svg>
@@ -1314,7 +1463,8 @@
     <!-- ========================================================= -->
     <!-- 7. BADGE DETAIL INSPECTOR DRAWER / FLYOUT                 -->
     <!-- ========================================================= -->
-    <div id="badge-inspector-drawer" class="badge-inspector-drawer-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div id="badge-inspector-drawer" class="badge-inspector-drawer-overlay hidden" aria-hidden="true" role="dialog"
+        aria-modal="true">
         <div class="badge-drawer-backdrop" id="badge-drawer-backdrop"></div>
         <div class="badge-drawer-panel">
             <div class="badge-drawer-header">
@@ -1322,7 +1472,8 @@
                     <span class="drawer-header-title">Achievement Dossier</span>
                     <span class="badge-rarity-pill" id="inspector-badge-tier-pill">🥇 Gold Tier</span>
                 </div>
-                <button type="button" class="btn-close-drawer" id="btn-close-badge-drawer" aria-label="Close Dossier">✕</button>
+                <button type="button" class="btn-close-drawer" id="btn-close-badge-drawer"
+                    aria-label="Close Dossier">✕</button>
             </div>
 
             <div class="drawer-body">
@@ -1339,7 +1490,8 @@
 
                 <div class="drawer-section">
                     <h4 class="drawer-section-title">📜 Achievement Lore</h4>
-                    <p class="drawer-lore-text" id="inspector-badge-lore">The triple-digit echelon. 100 hours of focused dedication places you among top-tier scholars.</p>
+                    <p class="drawer-lore-text" id="inspector-badge-lore">The triple-digit echelon. 100 hours of focused
+                        dedication places you among top-tier scholars.</p>
                 </div>
 
                 <div class="drawer-section">
@@ -1389,7 +1541,8 @@
     <nav class="floating-dock-nav hidden" id="floating-dock" aria-label="Quick View Navigation">
         <div class="dock-indicator-pill" id="dock-pill"></div>
         <button type="button" class="dock-tab active" data-view="dashboard" aria-label="Overview Dashboard">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect width="7" height="9" x="3" y="3" rx="1"></rect>
                 <rect width="7" height="5" x="14" y="3" rx="1"></rect>
                 <rect width="7" height="9" x="14" y="12" rx="1"></rect>
@@ -1398,7 +1551,8 @@
             <span class="dock-tooltip">Dashboard</span>
         </button>
         <button type="button" class="dock-tab" data-view="matrix" aria-label="Activity Matrix">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
                 <line x1="16" y1="2" x2="16" y2="6"></line>
                 <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -1413,28 +1567,32 @@
             <span class="dock-tooltip">Activity Matrix</span>
         </button>
         <button type="button" class="dock-tab" data-view="milestones" aria-label="Milestones">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="8" r="6"></circle>
                 <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
             </svg>
             <span class="dock-tooltip">Milestones</span>
         </button>
         <button type="button" class="dock-tab" data-view="expenses" aria-label="Expenses">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="2" x2="12" y2="22"></line>
                 <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
             <span class="dock-tooltip">Expenses</span>
         </button>
         <button type="button" class="dock-tab" data-view="study" aria-label="Study Logs">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
             <span class="dock-tooltip">Study Logs</span>
         </button>
         <button type="button" class="dock-tab" data-view="analytics" aria-label="Analytics">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 3v18h18"></path>
                 <path d="m19 9-5 5-4-4-3 3"></path>
             </svg>

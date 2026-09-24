@@ -318,6 +318,15 @@
             "amount": "500.0",
             "date": "2026-09-24",
             "tags": []
+        },
+        {
+            "username": "demo",
+            "category": "Coffee",
+            "amount": "250.0",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
         }
     ],
     "study": [
@@ -570,6 +579,15 @@
             "hours": "6.0",
             "date": "2026-09-24",
             "tags": []
+        },
+        {
+            "username": "demo",
+            "subject": "Algo",
+            "hours": "3.5",
+            "date": "2026-09-24",
+            "tags": [
+                "#ExamPrep"
+            ]
         }
     ]
 }
