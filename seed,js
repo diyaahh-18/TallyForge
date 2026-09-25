@@ -1,0 +1,165 @@
+const mongoose = require('mongoose');
+const Program = require('./models/Program'); // Adjust path to your Program model
+const Exercise = require('./models/Exercise'); // Adjust path to your Exercise model
+
+// Connect to MongoDB (adjust URI or use your app's existing connection logic)
+const seedDatabase = async () => {
+  try {
+    console.log('🌱 Starting database seeding...');
+
+    // Optional: Fetch some default exercise IDs from your DB to reference dynamically, 
+    // or use placeholder ObjectIds if your schema requires valid ObjectIds.
+    // Here we assume you have exercises seeded or we grab a few sample IDs.
+    const exercises = await Exercise.find().limit(10);
+    
+    if (exercises.length === 0) {
+      console.log('⚠️ Warning: No exercises found in the database. Please seed exercises first or ensure IDs are valid.');
+    }
+
+    // Fallback helper to grab an exercise ID or generate a dummy one if DB is empty
+    const getExId = (index) => {
+      if (exercises.length > 0) {
+        return exercises[index % exercises.length]._id;
+      }
+      return new mongoose.Types.ObjectId(); // Fallback ObjectId if no exercises exist yet
+    };
+
+    const programsData = [
+      {
+        title: 'Foundation Fitness',
+        level: 'beginner',
+        durationDays: 28,
+        description: 'A 28-day foundational program designed to build baseline strength and healthy habits.',
+        days: Array.from({ length: 28 }, (_, dayIndex) => ({
+          dayNumber: dayIndex + 1,
+          title: `Day ${dayIndex + 1}: Foundations`,
+          exercises: [
+            { exercise: getExId(0), sets: 3, reps: 10, restTime: 60 },
+            { exercise: getExId(1), sets: 3, reps: 10, restTime: 60 },
+            { exercise: getExId(2), sets: 3, reps: 8, restTime: 90 },
+            { exercise: getExId(3), sets: 2, duration: 300, restTime: 60 }
+          ]
+        }))
+      },
+      {
+        title: 'Strength Builder',
+        level: 'intermediate',
+        durationDays: 42,
+        description: 'A 42-day progressive overload program focused on compound lifts and muscle hypertrophy.',
+        days: Array.from({ length: 42 }, (_, dayIndex) => ({
+          dayNumber: dayIndex + 1,
+          title: `Day ${dayIndex + 1}: Power & Strength`,
+          exercises: [
+            { exercise: getExId(0), sets: 4, reps: 6, restTime: 120 },
+            { exercise: getExId(1), sets: 4, reps: 6, restTime: 120 },
+            { exercise: getExId(2), sets: 3, reps: 8, restTime: 90 },
+            { exercise: getExId(3), sets: 3, reps: 10, restTime: 60 },
+            { exercise: getExId(4), sets: 3, reps: 12, restTime: 60 }
+          ]
+        }))
+      },
+      {
+        title: 'Cardio Endurance',
+        level: 'intermediate',
+        durationDays: 35,
+        description: 'Boost your stamina and heart health with 35 days of high-energy cardiovascular workouts.',
+        days: Array.from({ length: 35 }, (_, dayIndex) => ({
+          dayNumber: dayIndex + 1,
+          title: `Day ${dayIndex + 1}: Endurance Push`,
+          exercises: [
+            { exercise: getExId(2), sets: 4, duration: 300, restTime: 45 },
+            { exercise: getExId(3), sets: 4, duration: 300, restTime: 45 },
+            { exercise: getExId(0), sets: 3, reps: 15, restTime: 30 },
+            { exercise: getExId(1), sets: 3, reps: 15, restTime: 30 }
+          ]
+        }))
+      },
+      {
+        title: 'Flexibility & Mobility',
+        level: 'beginner',
+        durationDays: 28,
+        description: 'Improve range of motion, reduce joint stiffness, and enhance recovery over 28 days.',
+        days: Array.from({ length: 28 }, (_, dayIndex) => ({
+          dayNumber: dayIndex + 1,
+          title: `Day ${dayIndex + 1}: Mobility Flow`,
+          exercises: [
+            { exercise: getExId(1), sets: 2, duration: 60, restTime: 30 },
+            { exercise: getExId(2), sets: 2, duration: 60, restTime: 30 },
+            { exercise: getExId(3), sets: 2, duration: 60, restTime: 30 },
+            { exercise: getExId(4), sets: 2, duration: 60, restTime: 30 }
+          ]
+        }))
+      },
+      {
+        title: 'Advanced Shred',
+        level: 'advanced',
+        durationDays: 56,
+        description: 'An intense 56-day body-recomposition challenge designed for experienced fitness enthusiasts.',
+        days: Array.from({ length: 56 }, (_, dayIndex) => ({
+          dayNumber: dayIndex + 1,
+          title: `Day ${dayIndex + 1}: High-Intensity Shred`,
+          exercises: [
+            { exercise: getExId(0), sets: 5, reps: 5, restTime: 90 },
+            { exercise: getExId(1), sets: 4, reps: 10, restTime: 60 },
+            { exercise: getExId(2), sets: 4, reps: 12, restTime: 60 },
+            { exercise: getExId(3), sets: 3, reps: 15, restTime: 45 },
+            { exercise: getExId(4), sets: 3, duration: 300, restTime: 30 },
+            { exercise: getExId(0), sets: 2, reps: 20, restTime: 30 }
+          ]
+        }))
+      },
+      {
+        title: 'Core & Balance',
+        level: 'beginner-intermediate',
+        durationDays: 21,
+        description: 'Strengthen your core stability and improve overall balance in 3 weeks.',
+        days: Array.from({ length: 21 }, (_, dayIndex) => ({
+          dayNumber: dayIndex + 1,
+          title: `Day ${dayIndex + 1}: Core Stability`,
+          exercises: [
+            { exercise: getExId(1), sets: 3, duration: 45, restTime: 30 },
+            { exercise: getExId(2), sets: 3, reps: 12, restTime: 45 },
+            { exercise: getExId(3), sets: 3, duration: 45, restTime: 30 },
+            { exercise: getExId(4), sets: 3, reps: 15, restTime: 45 }
+          ]
+        }))
+      }
+    ];
+
+    let upsertedCount = 0;
+
+    for (const program of programsData) {
+      await Program.findOneAndUpdate(
+        { title: program.title }, // Query to find existing program by title
+        program,                  // Data to update/insert
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
+      upsertedCount++;
+    }
+
+    console.log(`✅ Successfully seeded/updated ${upsertedCount} programs.`);
+    process.exit(0);
+  } catch (error) {
+    console.error('❌ Error seeding database:', error);
+    process.exit(1);
+  }
+};
+
+// Execute if run directly via node
+if (require.main === module) {
+  // Connect to your MongoDB instance (update connection string as needed for your project)
+  mongoose
+    .connect(process.env.MONGO_URI || 'mongodb://localhost:27017/fitness-app', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      console.log('📦 Connected to MongoDB for seeding');
+      seedDatabase();
+    })
+    .catch((err) => {
+      console.error('Database connection error:', err);
+    });
+}
+
+module.exports = seedDatabase;
